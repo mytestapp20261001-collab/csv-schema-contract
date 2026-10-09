@@ -22,6 +22,24 @@ class CLITests(unittest.TestCase):
             self.assertEqual(json.loads(run.stdout)["ok"], code == 0)
             self.assertEqual(run.stderr, "")
 
+    def test_cli_argument_errors_are_json_and_redacted(self):
+        secret = "PRIVATE_ARGUMENT_MARKER"
+        for arguments in [("--unknown", secret), ("--input",),
+                          ("--pretty=" + secret,), (secret,)]:
+            run = subprocess.run([sys.executable, str(ROOT / "tool.py"), *arguments],
+                                 capture_output=True, text=True)
+            self.assertEqual(run.returncode, 2)
+            self.assertEqual(run.stderr, "")
+            self.assertNotIn(secret, run.stdout + run.stderr)
+            self.assertEqual(json.loads(run.stdout)["error"]["code"], "invalid_input")
+
+    def test_cli_help_remains_text_and_success(self):
+        run = subprocess.run([sys.executable, str(ROOT / "tool.py"), "--help"],
+                             capture_output=True, text=True)
+        self.assertEqual(run.returncode, 0)
+        self.assertEqual(run.stderr, "")
+        self.assertIn("--input", run.stdout)
+
     def test_large_json_integer_is_safe_error(self):
         run=self.run_tool('{"number":'+'9'*5000+'}')
         self.assertEqual(run.returncode,2)

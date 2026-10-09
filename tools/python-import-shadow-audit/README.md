@@ -61,7 +61,9 @@ directory. Run once for each relevant import-root directory, including a project
 ## Safety and bounds
 
 Only inspect a directory selected by the user or these synthetic examples. The
-root and its ancestors cannot be symlinks. Entry symlinks and matching packages'
+root and its ancestors cannot be symlinks. Selected root paths containing a `..`
+component are rejected before normalization, even when the intended target is
+otherwise allowed. Entry symlinks and matching packages'
 symlinked `__init__.py` are reported as `symlink_not_followed`; their targets are
 never visited. Directory metadata is examined with descriptor-relative operations.
 No source bytes are read, even if a source file is huge or malicious. Special files

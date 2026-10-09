@@ -138,6 +138,19 @@ class AuditTests(unittest.TestCase):
         again = subprocess.run([sys.executable, "-I", str(HERE / "examples/create_examples.py"), str(destination)], capture_output=True, text=True)
         self.assertNotEqual(again.returncode, 0)
 
+    def test_parent_components_rejected_before_normalization(self):
+        self.database()
+        other = self.root / "other"; other.mkdir()
+        (other / "sub").mkdir()
+        (self.root / "link").symlink_to(other / "sub", target_is_directory=True)
+        selected = str(self.root) + "/link/../fixture.sqlite"
+        self.assertEqual(tool.audit(selected)["status"], "error")
+        self.assertEqual(tool.audit(str(other) + "/../fixture.sqlite")["status"], "error")
+        self.assertEqual(tool.audit(self.db)["status"], "pass")
+        p = subprocess.run([sys.executable, "-I", str(HERE / "tool.py"), selected], capture_output=True, text=True)
+        self.assertEqual(p.returncode, 2); self.assertEqual(p.stderr, "")
+        self.assertEqual(json.loads(p.stdout)["status"], "error")
+
     def test_cli_argument_errors_do_not_echo_input(self):
         secret = "PRIVATE_ARGUMENT_VALUE"
         process = subprocess.run([sys.executable, "-I", str(HERE / "tool.py"),

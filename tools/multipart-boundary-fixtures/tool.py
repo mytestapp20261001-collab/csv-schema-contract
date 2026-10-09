@@ -14,6 +14,11 @@ TOKEN = re.compile(r"[!#$%&'*+.^_`|~0-9A-Za-z-]+\Z")
 class InputError(ValueError):
     pass
 
+class Parser(argparse.ArgumentParser):
+    def error(self, message):
+        # argparse messages may contain raw options, paths, or caller secrets.
+        raise InputError("invalid command-line arguments")
+
 def require(condition, message):
     if not condition:
         raise InputError(message)
@@ -51,11 +56,12 @@ def unique_object(pairs):
     return obj
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = Parser(description=__doc__)
     parser.add_argument("--input", default="-", help="JSON file, or - for stdin (maximum 256 KiB)")
     parser.add_argument("--pretty", action="store_true", help="indent JSON output")
-    args = parser.parse_args(argv)
+    args = None
     try:
+        args = parser.parse_args(argv)
         if args.input == "-":
             raw = sys.stdin.buffer.read(MAX_BYTES + 1)
         else:
@@ -74,7 +80,7 @@ def main(argv=None):
         code = 2
     else:
         code = 0 if out["ok"] else 1
-    print(json.dumps(out, sort_keys=True, ensure_ascii=True, allow_nan=False, indent=2 if args.pretty else None))
+    print(json.dumps(out, sort_keys=True, ensure_ascii=True, allow_nan=False, indent=2 if args is not None and args.pretty else None))
     return code
 
 import base64
@@ -103,18 +109,25 @@ def inspect_wire(boundary, wire):
     marker = b'--' + boundary
     findings, delimiters = [], []
     offset = 0
-    # Recognize only line starts, preserving byte offsets; CRLF is required framing.
-    for line in wire.splitlines(keepends=True):
+    # Only LF creates a candidate line start. Bare CR is an ordinary binary
+    # payload byte, not a line boundary (unlike bytes.splitlines()).
+    lines = wire.split(b'\n')
+    for index, chunk in enumerate(lines):
+        line = chunk + (b'\n' if index < len(lines) - 1 else b'')
         if line.startswith(marker):
             if offset and wire[max(0,offset-2):offset] != b'\r\n':
                 findings.append(issue('non_crlf_before_delimiter', offset=offset))
             if line.endswith(b'\n') and not line.endswith(b'\r\n'):
                 findings.append(issue('non_crlf_delimiter_ending', offset=offset))
-            ending = line.rstrip(b'\r\n')
+            # Strip one exact framing ending, never arbitrary CR/LF bytes.
+            # A closing delimiter may end at EOF, but a dangling CR is invalid.
+            ending = line[:-2] if line.endswith(b'\r\n') else line[:-1] if line.endswith(b'\n') else line
             suffix = ending[len(marker):].rstrip(b' \t')
             if suffix not in (b'', b'--'):
                 findings.append(issue('boundary_prefix_collision_or_invalid_suffix', offset=offset))
             else:
+                if suffix == b'' and not line.endswith(b'\r\n') and not line.endswith(b'\n'):
+                    findings.append(issue('non_crlf_delimiter_ending', offset=offset))
                 delimiters.append((offset, offset+len(line), suffix == b'--'))
         offset += len(line)
     if not delimiters or delimiters[0][0] != 0:

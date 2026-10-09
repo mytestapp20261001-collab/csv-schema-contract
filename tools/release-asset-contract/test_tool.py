@@ -149,6 +149,28 @@ class AuditTests(unittest.TestCase):
                 self.assertEqual(json.loads(p.stdout)["schema_version"], 1)
                 self.assertEqual(p.stderr, "")
 
+    def test_parent_components_rejected_before_normalization(self):
+        other = self.base / "other"; other.mkdir()
+        (other / "sub").mkdir()
+        (self.base / "link").symlink_to(other / "sub", target_is_directory=True)
+        selected_root = str(self.base) + "/link/../assets"
+        selected_manifest = str(self.base) + "/link/../manifest.json"
+        self.assertEqual(tool.audit(self.manifest, selected_root)["status"], "error")
+        self.assertEqual(tool.audit(selected_manifest, self.root)["status"], "error")
+        self.assertEqual(tool.audit(str(other) + "/../manifest.json", self.root)["status"], "error")
+        self.assertEqual(self.run_audit()["status"], "pass")
+        for args in ((str(self.manifest), selected_root), (selected_manifest, str(self.root))):
+            p = subprocess.run([sys.executable, "-I", str(HERE / "tool.py"), *args], capture_output=True, text=True)
+            self.assertEqual(p.returncode, 2); self.assertEqual(p.stderr, "")
+            self.assertEqual(json.loads(p.stdout)["status"], "error")
+
+    def test_unicode_control_paths_rejected(self):
+        for control in ("\x00", "\x1f", "\x7f", "\x80", "\x85", "\x9f"):
+            with self.subTest(control=repr(control)):
+                self.document["files"][0]["path"] = "asset" + control
+                self.write_manifest()
+                self.assertEqual(self.run_audit()["status"], "error")
+
     def test_cli_argument_errors_do_not_echo_input(self):
         secret = "PRIVATE_ARGUMENT_VALUE"
         process = subprocess.run([sys.executable, "-I", str(HERE / "tool.py"),

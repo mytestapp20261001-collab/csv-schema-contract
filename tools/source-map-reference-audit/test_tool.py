@@ -91,4 +91,33 @@ class Tests(unittest.TestCase):
         self.assertEqual(tool.audit(p,root=self.root)['status'],'pass')
         self.assertEqual(self.call(p,'--root',self.root)[0],0)
 
+
+    def test_source_root_cannot_mask_nonlocal_sources(self):
+        for source in ('/absolute.js','//server/share.js','https://example.invalid/a.js','C:/drive.js','%2Fabsolute.js','C%3A/drive.js'):
+            with self.subTest(source=source):
+                p=self.make(sourceRoot='src',sources=[source],sourcesContent=['embedded'])
+                expected='encoded_separator_reference' if source.startswith('%2F') else 'nonlocal_reference'
+                self.assertIn(expected,self.codes(tool.audit(p,root=self.root)))
+                self.assertEqual(self.call(p,'--root',self.root)[0],1)
+
+    def test_source_root_is_validated_independently(self):
+        for prefix in ('https://example.invalid','/absolute','//server/share','C:/drive'):
+            with self.subTest(prefix=prefix):
+                p=self.make(sourceRoot=prefix,sources=[],sourcesContent=[])
+                self.assertIn('nonlocal_reference',self.codes(tool.audit(p,root=self.root)))
+                self.assertEqual(self.call(p,'--root',self.root)[0],1)
+        for prefix in ('src?','src#','a%2fb'):
+            p=self.make(sourceRoot=prefix,sources=['a.js'],sourcesContent=['embedded'])
+            self.assertEqual(tool.audit(p,root=self.root)['status'],'findings')
+
+    def test_relative_source_root_and_parent_remain_valid(self):
+        (self.root/'src').mkdir();(self.root/'src'/'a.js').write_text('content')
+        p=self.make(sourceRoot='src/',sources=['a.js'],sourcesContent=['content'])
+        self.assertEqual(tool.audit(p,root=self.root,check_embedded_files=True)['status'],'pass')
+        maps=self.root/'maps';maps.mkdir();p=maps/'bundle.map'
+        p.write_text(json.dumps({'version':3,'sourceRoot':'../src','sources':['a.js'],'mappings':''}))
+        self.assertEqual(tool.audit(p,root=self.root)['status'],'pass')
+        p.write_text(json.dumps({'version':3,'sourceRoot':'.','sources':['../src/a.js'],'mappings':''}))
+        self.assertEqual(tool.audit(p,root=self.root)['status'],'pass')
+
 if __name__=="__main__":unittest.main()

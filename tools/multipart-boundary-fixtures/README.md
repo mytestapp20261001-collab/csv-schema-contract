@@ -44,7 +44,7 @@ including LF-only lines that could confuse a tolerant consumer.
 
 Inspect mode requires `mode: "inspect"`, `boundary`, and `wire_base64` (strict
 base64, decoded <=128 KiB). These keys cannot be mixed with synthesize-only keys.
-It reports delimiter byte offsets, part-delimiter/closing counts, wire length and
+It reports byte offsets for relevant framing findings, part-delimiter/closing counts, wire length and
 SHA-256, not body bytes. `build_fixture(boundary_bytes, parts_bytes, closing=True,
 newline="crlf")` is a local library helper for obtaining synthesized bytes;
 `inspect_wire(boundary_bytes, wire_bytes)` returns framing findings and counts.
@@ -57,7 +57,8 @@ JSON input is capped at 256 KiB. Unknown or duplicate JSON keys are rejected.
 ## Deliberate limits
 
 This is a framing subset with no preamble or epilogue. Delimiters require CRLF;
-the last close may omit its final CRLF. Transport padding (space/tab) is accepted.
+the last close may omit its entire final CRLF; a dangling CR is not valid framing.
+Bare CR bytes inside a binary payload do not create delimiter line starts. Transport padding (space/tab) is accepted.
 Regular parts require a CRLF header/body separator with <=8192 header bytes;
 headers themselves are not parsed. Headerless parts are supported.
 Boundary-prefix lines with extra suffixes are flagged conservatively rather than

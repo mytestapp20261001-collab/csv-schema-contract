@@ -3,6 +3,7 @@
 import argparse
 import json
 import math
+from decimal import Decimal, DecimalException
 import sys
 from pathlib import Path
 
@@ -36,8 +37,12 @@ def read_text(path):
     return raw.decode("utf-8-sig")
 
 def finite_float(value):
-    parsed = float(value)
-    require(math.isfinite(parsed), "nonfinite JSON number")
+    require(len(value) <= 128, "decimal token exceeds 128 characters")
+    try:
+        parsed = Decimal(value)
+    except DecimalException as exc:
+        raise BadInput("invalid or unsupported decimal") from exc
+    require(parsed.is_finite() and abs(parsed.as_tuple().exponent) <= 1000, "unsupported decimal exponent")
     return parsed
 
 def load_json(path):
@@ -68,8 +73,14 @@ def audit(data):
     require(isinstance(data, dict) and set(data) <= {"thresholds", "files"}, "expected thresholds/files object")
     thresholds, files = data.get("thresholds"), data.get("files")
     require(isinstance(thresholds, dict) and thresholds and set(thresholds) <= {"line", "branch"}, "require line and/or branch thresholds")
-    for value in thresholds.values():
-        require(type(value) in (int, float) and math.isfinite(value) and 0 <= value <= 100, "threshold must be finite 0..100")
+    ratios = {}
+    exact_thresholds = {}
+    for metric, value in thresholds.items():
+        require(type(value) in (int, float, Decimal), "threshold must be a number")
+        decimal = finite_float(str(value))
+        require(0 <= decimal <= 100, "threshold must be finite 0..100")
+        ratios[metric] = decimal.as_integer_ratio()
+        exact_thresholds[metric] = str(decimal)
     require(isinstance(files, list) and len(files) <= MAX_ITEMS, "files must be a bounded array")
     findings, totals, seen = [], {key: [0, 0] for key in thresholds}, set()
     if not files:
@@ -96,8 +107,8 @@ def audit(data):
             totals[metric][1] += total
             if total == 0:
                 findings.append(finding("zero_denominator", file_index=i, metric=metric))
-            elif covered * 100 < thresholds[metric] * total:
-                findings.append(finding("below_threshold", file_index=i, metric=metric, percent=round(covered * 100 / total, 6), threshold=thresholds[metric]))
+            elif covered * 100 * ratios[metric][1] < ratios[metric][0] * total:
+                findings.append(finding("below_threshold", file_index=i, metric=metric, percent=round(covered * 100 / total, 6), threshold=float(thresholds[metric]), threshold_decimal=exact_thresholds[metric]))
     aggregates = {key: {"covered": counts[0], "total": counts[1], "percent": round(counts[0]*100/counts[1], 6) if counts[1] else None} for key, counts in totals.items()}
     return report(findings, files=len(files), aggregates=aggregates, policy="each_file")
 

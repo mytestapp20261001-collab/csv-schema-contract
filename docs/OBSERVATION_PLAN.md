@@ -4,7 +4,8 @@
 
 The owner approved 40 new, independently runnable engineering tools, with
 10 tools in each of four guidance groups: light, medium, strong and maximal.
-The ten existing public projects remain unchanged. Their promotion is already
+The ten existing public projects retain their original guidance; correctness
+fixes after usability review are versioned and recorded separately. Their promotion is already
 heterogeneous; they are a historical observation group, **not** an unguided
 control. Earlier plans for 20 projects were not 20 delivered projects.
 
@@ -82,6 +83,8 @@ Do not infer that guidance caused participation or improved task performance.
 
 ## Continue, revise or stop
 
+The owner also requested a complete 50-tool usability check after release;
+that review may trigger correctness fixes without reassigning guidance groups.
 Revisit a tool after reproducible defects or useful real feedback, not to meet
 a release count. Fix safety/correctness defects before promotion. If a guide
 is misunderstood as mandatory, stop that variant and revise it. If evidence

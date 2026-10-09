@@ -31,7 +31,7 @@ Keys must occur inside a section. Unindented section/assignment lines are requir
 
 `--key-case sensitive|fold` and `--section-case sensitive|fold` default independently to `sensitive`. `fold` uses Unicode `str.casefold`, which is deliberately different from ConfigParser's default lowercase transform. Reopening a section is a finding; key tracking continues across all declarations of that normalized section. Findings contain current and first line positions, not names or values.
 
-50,000 LF-delimited lines and 65,536 characters per nonblank/noncomment data line. At least one section is required; an empty section may have no keys. Unsupported/malformed syntax exits 2 rather than making a speculative merge. This cannot certify how a third-party application's INI dialect treats the same file.
+50,000 LF-delimited physical lines (a terminal LF does not add a synthetic line; actual blank lines still count) and 65,536 characters per nonblank/noncomment data line. At least one section is required; an empty section may have no keys. Unsupported/malformed syntax exits 2 rather than making a speculative merge. This cannot certify how a third-party application's INI dialect treats the same file.
 
 ## Technical entry point
 

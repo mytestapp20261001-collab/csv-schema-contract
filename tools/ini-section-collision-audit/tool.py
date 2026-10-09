@@ -96,6 +96,10 @@ def audit(text, *, key_case="sensitive", section_case="sensitive"):
     sections, keys, current = {}, {}, None
     records = 0
     lines = text.split("\n")
+    # A terminal LF terminates the last physical line; it is not another line.
+    # Remove only its synthetic split element, preserving real blank lines.
+    if lines[-1] == "":
+        lines.pop()
     if len(lines) > MAX_RECORDS:
         raise InputError("line_count_limit")
     for number, raw in enumerate(lines, 1):

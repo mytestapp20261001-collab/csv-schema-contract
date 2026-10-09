@@ -166,6 +166,8 @@ def _audit_csv(text, contract):
             rows += 1
             if rows > MAX_RECORDS:
                 raise InputError("row_limit")
+            if len(row) > 1000:
+                raise InputError("row_width_limit")
             if len(row) != len(header):
                 report.add("row_width", row=rows + 1, expected=len(header), actual=len(row))
             for contract_index, column in enumerate(columns, 1):

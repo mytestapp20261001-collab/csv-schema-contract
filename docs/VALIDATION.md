@@ -18,3 +18,9 @@ Each tool documents its own supported subset and limitations.
 
 Remote CI is a separate check: consult the Actions run for the exact commit.
 Neither test results nor publication establish natural discovery or game use.
+
+## Subsequent full usability review
+
+The initial result above is retained as historical evidence. See [the full
+50-tool audit](FULL_AUDIT_2026-10-09.md) for later independently found defects,
+corrections and the new 794-test-per-runtime acceptance result.

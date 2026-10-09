@@ -27,11 +27,19 @@ def result(findings=None, summary=None, error=None):
             "errors": [{"code": "bad_input", "message": error}] if error else []}
 
 
+def selected_absolute(path):
+    """Reject parent traversal before normalization can hide symlink components."""
+    raw = Path(os.fspath(path))
+    if ".." in raw.parts:
+        raise InputError("Selected paths must not contain parent (..) components")
+    return Path(os.path.abspath(raw))
+
+
 def open_directory(path):
     """Open each directory component without following any symlink (POSIX)."""
     if not hasattr(os, "O_NOFOLLOW") or os.open not in os.supports_dir_fd:
         raise InputError("This tool requires POSIX O_NOFOLLOW and dir_fd support")
-    absolute = Path(os.path.abspath(os.fspath(path)))
+    absolute = selected_absolute(path)
     fd = os.open(absolute.anchor, os.O_RDONLY | os.O_DIRECTORY)
     try:
         for part in absolute.parts[1:]:

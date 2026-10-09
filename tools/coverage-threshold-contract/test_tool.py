@@ -67,4 +67,23 @@ class Tests(unittest.TestCase):
         data = self.good(); data['files'] *= 2
         self.assertIn('duplicate_file', self.codes(data))
 
+class ExactThresholdTests(unittest.TestCase):
+    def check(self, token, covered, total, expected):
+        with tempfile.TemporaryDirectory() as d:
+            path=Path(d)/'input.json'
+            path.write_text('{"thresholds":{"line":'+token+'},"files":[{"path":"x","line":{"covered":'+str(covered)+',"total":'+str(total)+'}}]}')
+            p=subprocess.run([sys.executable,str(HERE/'tool.py'),str(path)],capture_output=True,text=True)
+            self.assertEqual(p.returncode,expected,p.stdout+p.stderr)
+            self.assertIsInstance(json.loads(p.stdout),dict)
+    def test_exact_decimal_boundary(self): self.check('0.07',7,10000,0)
+    def test_decimal_below(self): self.check('0.07',6,10000,1)
+    def test_decimal_above(self): self.check('0.07',8,10000,0)
+    def test_sub_float_precision(self): self.check('50.000000000000000000001',1,2,1)
+    def test_tiny_positive_threshold(self): self.check('1e-400',0,1,1)
+    def test_extreme_exponent_sanitized(self): self.check('1e999999999999999999999999999999',0,1,2)
+    def test_exponent_budget(self): self.check('1e-1001',0,1,2)
+    def test_decimal_token_budget(self): self.check('0.'+'1'*129,0,1,2)
+    def test_float_api_shortest_decimal(self):
+        self.assertEqual(tool.audit({'thresholds':{'line':0.07},'files':[{'path':'x','line':{'covered':7,'total':10000}}]})['status'],'pass')
+
 if __name__ == "__main__": unittest.main()

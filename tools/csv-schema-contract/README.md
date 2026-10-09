@@ -37,7 +37,7 @@ All input files must be regular files, UTF-8 encoded, and no larger than 8 MiB e
 
 ## Tool-specific limits and non-goals
 
-1,000 columns and 50,000 data records; fields at most 65,536 characters. Malformed CSV is input error 2. A header-only file is permitted. BOMs are not removed. The `csv` parser's dialect behavior is the contract, not a claim of universal RFC 4180 compliance.
+At most 1,000 fields in the header and in each data record, and 50,000 data records; fields at most 65,536 characters. Malformed CSV or a record exceeding the field-count limit is input error 2. Width mismatches within that limit are audit findings (exit 1). A header-only file is permitted. BOMs are not removed. The `csv` parser's dialect behavior is the contract, not a claim of universal RFC 4180 compliance.
 
 ## Python API
 

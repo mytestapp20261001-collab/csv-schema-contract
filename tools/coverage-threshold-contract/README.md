@@ -33,11 +33,11 @@ Exit codes: 0 = contract passes; 1 = findings; 2 = invalid/unreadable input or i
 
 Input is a tool-specific JSON object, not a coverage.py or Istanbul export. `thresholds` maps `line` and/or `branch` to percentages from 0 to 100; `files` is an array of objects with `path` plus metric objects containing integer `covered` and `total`. Only selected metrics are required. Each selected metric of each file must meet its threshold. Counts satisfy 0 <= covered <= total <= 10^12. Zero denominators, no files, missing metrics, and duplicate paths produce findings. Aggregate percentages are descriptive, not an alternative gate. Extra top-level/file/metric keys and malformed numbers are rejected.
 
-This checks supplied measurements, never measures coverage or executes tests. It cannot detect files the producer omitted. Paths are identifiers only; no source files are opened. Limits: 2 MiB input, 10,000 files. The arithmetic and JSON schema are this tool's explicit contract, not an industry coverage interchange standard.
+This checks supplied measurements, never measures coverage or executes tests. It cannot detect files the producer omitted. Paths are identifiers only; no source files are opened. Limits: 2 MiB input, 10,000 files. Threshold comparisons preserve decimal JSON tokens exactly using integer ratios; displayed percentages remain rounded. Decimal tokens are limited to 128 characters and exponent magnitude 1,000; unsupported precision returns exit 2. Findings include `threshold_decimal` for the exact threshold alongside the numeric display field. The arithmetic and JSON schema are this tool's explicit contract, not an industry coverage interchange standard.
 
 ## API
 
-Import `tool.py` and call `audit(data)` with the decoded contract. Invalid structure raises `BadInput`; the CLI catches it and returns error JSON. The API expects ordinary JSON-compatible Python values.
+Import `tool.py` and call `audit(data)` with the decoded contract. Invalid structure raises `BadInput`; the CLI catches it and returns error JSON. The API accepts JSON-compatible values and Decimal thresholds; float API thresholds use their shortest decimal representation. Use `load_json` or Decimal to retain precision beyond a binary float.
 
 ## Safety
 

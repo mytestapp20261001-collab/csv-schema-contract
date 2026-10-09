@@ -57,6 +57,15 @@ class Tests(unittest.TestCase):
     def test_disjoint_scc(self):
         data = {'nodes':['a','b','c','d'],'edges':[['a','b'],['b','a'],['c','d'],['d','c']]}
         self.assertEqual(tool.audit(data)['summary']['cyclic_components'], 2)
+    def test_selfloop_inside_larger_scc_counted_once(self):
+        data={'nodes':['a','b'],'edges':[['a','a'],['a','b'],['b','a']]}
+        self.assertEqual(tool.audit(data)['summary']['cyclic_components'],1)
+    def test_two_selfloops_inside_one_scc(self):
+        data={'nodes':['a','b'],'edges':[['a','a'],['b','b'],['a','b'],['b','a']]}
+        self.assertEqual(tool.audit(data)['summary']['cyclic_components'],1)
+    def test_disjoint_single_and_multi_cycles(self):
+        data={'nodes':['a','b','c'],'edges':[['a','a'],['b','c'],['c','b']]}
+        self.assertEqual(tool.audit(data)['summary']['cyclic_components'],2)
     def test_empty(self):
         self.assertEqual(tool.audit({'nodes':[],'edges':[]})['status'], 'pass')
     def test_edge_shape(self):

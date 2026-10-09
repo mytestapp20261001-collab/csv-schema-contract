@@ -133,4 +133,12 @@ class AuditTests(unittest.TestCase):
         result=tool.audit('<r xmlns="urn:SUPERSECRET" a="SUPERSECRET">SUPERSECRET</r>')
         self.assertNotIn('SUPERSECRET',json.dumps(result))
 
+    def test_multiline_opening_tag_reports_element_start_line(self):
+        text = '<!-- leading line -->\n<root\n xmlns:a="urn:a"\n xmlns:b="urn:b"\n plain="value">\n<a:child/>\n</root>'
+        report = tool.audit(text, require_namespaced_attributes=True)
+        self.assertEqual([d['line'] for d in report['declarations']], [2, 2])
+        self.assertEqual(report['findings'][0]['line'], 2)
+        self.assertEqual(report['findings'][0]['code'], 'unqualified_attribute')
+        self.assertEqual(report['summary']['namespace_declarations'], 2)
+
 if __name__ == '__main__': unittest.main()

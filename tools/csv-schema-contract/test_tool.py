@@ -140,4 +140,18 @@ class AuditTests(unittest.TestCase):
         result = tool.audit('id,value\nSUPERSECRET,x\n',self.contract())
         self.assertNotIn('SUPERSECRET',json.dumps(result))
 
+    def test_record_field_limit_is_hard(self):
+        contract = {'columns': [{'name': 'id', 'type': 'integer'}], 'allow_extra': True}
+        # A width mismatch below the resource limit remains an audit finding.
+        report = tool.audit('id\n' + ','.join(['1'] * 1000), contract)
+        self.assertEqual(report['findings'][0]['code'], 'row_width')
+        with self.assertRaisesRegex(tool.InputError, 'row_width_limit'):
+            tool.audit('id\n' + ','.join(['1'] * 1001), contract)
+
+    def test_header_and_record_at_field_limit(self):
+        header = ['id'] + ['extra' + str(i) for i in range(999)]
+        contract = {'columns': [{'name': 'id', 'type': 'integer'}], 'allow_extra': True}
+        report = tool.audit(','.join(header) + '\n' + ','.join(['1'] * 1000), contract)
+        self.assertEqual(report['status'], 'pass')
+
 if __name__ == '__main__': unittest.main()

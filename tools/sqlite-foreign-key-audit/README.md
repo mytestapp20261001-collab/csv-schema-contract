@@ -54,7 +54,8 @@ max_steps=1000000, timeout_seconds=5)` returns the same JSON-serializable dictio
 ## Safety and limits
 
 - Requires Linux, `/proc/self/fd`, and no-symlink descriptor operations. Paths with
-  symlink components, non-regular inputs, and any existing `-wal`, `-shm`, or
+  symlink components or any `..` component (rejected before path normalization),
+  non-regular inputs, and any existing `-wal`, `-shm`, or
   `-journal` sidecar are rejected. No sidecar is deleted or repaired.
 - Select an offline, cleanly closed, stable standalone database. The connection
   uses `mode=ro&immutable=1`, query-only mode, disabled trusted schema, and defensive

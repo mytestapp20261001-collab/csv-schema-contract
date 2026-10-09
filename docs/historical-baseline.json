@@ -1,6 +1,5 @@
 {
   "verified_at": "2026-10-09T06:29:00Z",
-  "unchanged": true,
   "scope": "Ten separate pre-existing public projects; 20 was an earlier proposal, not a delivered count. Labels are qualitative relative to the new templates, not calibrated measurements.",
   "projects": [
     {
@@ -53,5 +52,7 @@
       "observed_commit_prefix": "1428869b",
       "qualitative_guidance": "light"
     }
-  ]
+  ],
+  "unchanged_at_initial_collection_release": true,
+  "interpretation": "Dated pre-audit baseline; later correctness fixes can advance repository HEAD without changing the historical guidance group."
 }

@@ -25,11 +25,11 @@ This skill only reads local input and produces a local stdout report. It does no
 
 ## Semantics and cautions
 
-The parser reports namespace IDs in first-encounter order, element and attribute counts per namespace, declaration line positions, default-namespace declarations, and prefix rebindings. Identical namespace URIs share an ID even when different prefixes use them. The empty namespace is included when encountered. Restoring a parent binding after a child scope is handled correctly.
+The parser reports namespace IDs in first-encounter order, element and attribute counts per namespace, owning-element start-line positions for declarations, default-namespace declarations, and prefix rebindings. Identical namespace URIs share an ID even when different prefixes use them. The empty namespace is included when encountered. Restoring a parent binding after a child scope is handled correctly.
 
 Default namespaces apply to element names, not to unprefixed attributes. `--require-namespaced-attributes` makes each unqualified attribute a finding; without it, the inventory is informational and well-formed permitted XML exits 0. Namespace declarations themselves are not counted as ordinary attributes. The predefined `xml` namespace is recognized.
 
-Namespace URI and prefix strings, attribute values, text, and tag names are redacted by default. `--show-names` opts into namespace URI and prefix disclosure (never attribute/text values). Declaration lines and IDs let you correlate a redacted report with the original file locally.
+Namespace URI and prefix strings, attribute values, text, and tag names are redacted by default. `--show-names` opts into namespace URI and prefix disclosure (never attribute/text values). Each declaration `line` and each unqualified-attribute finding `line` is the start line of its owning element. If an opening tag spans multiple lines, this is not the exact line of the `xmlns` declaration or attribute. These element-start lines and namespace IDs let you correlate a redacted report with the original file locally.
 
 DTD declarations, internal/custom entity declarations, and external-entity resolution are rejected by Expat callbacks. No DTD or URL is fetched. Predefined XML entities and numeric character references remain valid. DTD-looking strings inside comments or CDATA are not declarations. Malformed XML, undefined prefixes, and duplicate expanded attribute names are input errors, not recoverable findings.
 

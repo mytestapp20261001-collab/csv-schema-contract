@@ -24,9 +24,14 @@ def resolve_link(path, entries, root_parts, max_hops):
             visited.add(state);hops+=1
             if hops>max_hops:return "link_hop_limit_exceeded",hops
             if target.startswith("/"):
-                tokens=target.split("/")[1:]
-                if tokens[:len(root_parts)]!=root_parts:return "outside_scope",hops
-                stack=[];tokens=tokens[len(root_parts):]
+                tokens=deque(target.split("/")[1:])
+                # Ignore harmless separators/dots only while matching the real
+                # root prefix. Never normalize away '..', and keep the suffix
+                # verbatim so file/. and file/ still require a directory.
+                for root_part in root_parts:
+                    while tokens and tokens[0] in ("", "."):tokens.popleft()
+                    if not tokens or tokens.popleft()!=root_part:return "outside_scope",hops
+                stack=[]
             else:tokens=target.split("/")
             pending.extendleft(reversed(tokens))
         else:

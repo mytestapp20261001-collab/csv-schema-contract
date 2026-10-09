@@ -22,7 +22,11 @@ def audit(path, *, marker_size=7,allow_unlabeled=False,max_bytes=16777216,max_li
     except UnicodeDecodeError:raise InputError('expected UTF-8 text') from None
     if '\x00' in text:raise InputError('NUL-containing input is outside the text audit scope')
     report=Report(TOOL,max_findings);stack=[];complete=0;lines=0
-    for number,line in enumerate(text.split('\n'),1):
+    # LF terminates a line; it does not create an extra empty line at EOF.
+    # Do not use splitlines(): other Unicode separators are ordinary content.
+    logical_lines=text.split('\n')
+    if logical_lines[-1]=='':logical_lines.pop()
+    for number,line in enumerate(logical_lines,1):
         lines=number
         if number>max_lines:raise InputError('line limit exceeded')
         if line.endswith('\r'):line=line[:-1]

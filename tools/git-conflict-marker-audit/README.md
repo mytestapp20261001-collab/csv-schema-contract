@@ -4,7 +4,7 @@ Audit complete and malformed Git-style conflict blocks with a bounded state mach
 
 ## Scope
 
-Scans an explicitly chosen UTF-8 file, without Git execution or repository mutation. Recognizes merge and diff3/zdiff3 marker structure using a configurable marker width (default 7), including nested starts, duplicate separators, misplaced base markers, early ends, orphan labeled markers, and unterminated blocks. Reports line numbers but not labels or source lines.
+Scans an explicitly chosen UTF-8 file, without Git execution or repository mutation. Recognizes merge and diff3/zdiff3 marker structure using a configurable marker width (default 7), including nested starts, duplicate separators, misplaced base markers, early ends, orphan labeled markers, and unterminated blocks. Reports line numbers but not labels or source lines. Lines are LF-delimited; a final LF terminates its line without adding a phantom empty line, and an empty file contains zero lines.
 
 To reduce false positives, bare `=======` rows outside an open block are ignored. Default start/base/end markers require a nonempty label after one space; opt into unlabeled markers with `--allow-unlabeled`. Exact column-zero markers only are considered. Select `--marker-size` to match `.gitattributes`; configuration is not read automatically. Literal conflict examples in documentation can still be reported, while custom/indented/unlabeled markers outside the selected policy can be missed. This is a lexical audit, not proof that Git has or has not resolved an index conflict.
 

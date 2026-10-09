@@ -69,4 +69,27 @@ class Tests(unittest.TestCase):
         with mock.patch.object(_support.os,'name','unsupported'):
             with self.assertRaises(_support.InputError):_support._flags()
 
+
+    def test_absolute_internal_redundant_prefix_components(self):
+        (self.root/'file').touch()
+        for index,prefix in enumerate((str(self.root).replace('/','//'),str(self.root).replace('/','/./'))):
+            (self.root/('link'+str(index))).symlink_to(prefix+'/file')
+        self.assertEqual(tool.audit(self.root)['status'],'pass');self.assertEqual(self.call(self.root)[0],0)
+
+    def test_absolute_suffix_preserves_directory_requirements(self):
+        (self.root/'file').touch();(self.root/'dir').mkdir()
+        (self.root/'good').symlink_to(str(self.root)+'/dir/../file')
+        (self.root/'bad-dot').symlink_to(str(self.root)+'/file/.')
+        (self.root/'bad-slash').symlink_to(str(self.root)+'/file/')
+        r=tool.audit(self.root)
+        self.assertEqual({f['path'] for f in r['findings']},{'bad-dot','bad-slash'})
+        self.assertEqual(self.codes(r),{'non_directory_component'})
+
+    def test_absolute_prefix_does_not_normalize_dotdot_or_links(self):
+        (self.root/'file').touch();(self.root/'out').symlink_to('../outside')
+        (self.root/'chain').symlink_to(str(self.root)+'/out/../file')
+        (self.root/'escape-return').symlink_to(str(self.root)+'/../'+self.root.name+'/file')
+        r=tool.audit(self.root);self.assertEqual(self.codes(r),{'outside_scope'})
+        self.assertEqual({f['path'] for f in r['findings']},{'out','chain','escape-return'})
+
 if __name__=="__main__":unittest.main()

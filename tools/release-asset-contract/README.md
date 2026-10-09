@@ -62,7 +62,8 @@ Unknown fields, duplicate JSON keys, non-finite numbers, and duplicate exact tar
 paths are rejected. UTF-8 is required; a UTF-8 BOM is not accepted.
 
 Paths are nonempty relative POSIX paths with no absolute prefix, backslash, colon,
-empty component, `.`/`..`, control character, or unpaired surrogate. They are
+empty component, `.`/`..`, Unicode control character (category `Cc`, including
+DEL and C1 controls), or unpaired surrogate. They are
 compared exactly, not case-folded or Unicode-normalized. The validator checks the
 required file set only: it does **not** enumerate/reject additional files. Different
 paths to hard-linked files are permitted; hashes do not authenticate who created a
@@ -70,7 +71,9 @@ release or prove provenance.
 
 ## Confinement and bounds
 
-The manifest, selected root, and their ancestors cannot be symlinks. Each asset is
+The manifest, selected root, and their ancestors cannot be symlinks. Selected
+manifest/root paths containing a `..` component are rejected before normalization,
+even if they would otherwise resolve to an allowed location. Each asset is
 opened descriptor-relatively beneath the selected root without following symlinks
 in any path component. Non-regular files are not read. FIFO opens are nonblocking.
 Missing assets and unsafe child paths produce findings; unreadable roots/manifests

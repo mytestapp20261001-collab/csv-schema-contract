@@ -90,6 +90,21 @@ class AuditTests(unittest.TestCase):
                 self.assertEqual(json.loads(p.stdout)["schema_version"], 1)
                 self.assertEqual(p.stderr, "")
 
+    def test_parent_components_rejected_before_normalization(self):
+        safe = self.root / "safe"; safe.mkdir()
+        other = self.root / "other"; other.mkdir()
+        (other / "sub").mkdir(); (other / "safe").mkdir()
+        (other / "safe/json.py").write_text("raise RuntimeError('not imported')")
+        (self.root / "link").symlink_to(other / "sub", target_is_directory=True)
+        selected = str(self.root) + "/link/../safe"
+        self.assertEqual(tool.audit(selected)["status"], "error")
+        self.assertEqual(tool.audit(str(safe) + "/../safe")["status"], "error")
+        self.assertEqual(tool.audit(safe)["status"], "pass")
+        self.assertEqual(tool.audit(str(safe) + "/.")["status"], "pass")
+        p = subprocess.run([sys.executable, "-I", str(HERE / "tool.py"), selected], capture_output=True, text=True)
+        self.assertEqual(p.returncode, 2); self.assertEqual(p.stderr, "")
+        self.assertEqual(json.loads(p.stdout)["status"], "error")
+
     def test_cli_argument_errors_do_not_echo_input(self):
         secret = "PRIVATE_ARGUMENT_VALUE"
         process = subprocess.run([sys.executable, "-I", str(HERE / "tool.py"),

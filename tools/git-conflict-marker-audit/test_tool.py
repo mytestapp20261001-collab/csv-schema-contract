@@ -68,4 +68,20 @@ class Tests(unittest.TestCase):
         with mock.patch.object(_support.os,'name','unsupported'):
             with self.assertRaises(_support.InputError):_support._flags()
 
+
+    def test_line_count_has_no_phantom_final_line(self):
+        for text,count in [('',0),('normal',1),('normal\n',1),('normal\r\n',1),('\n',1),('a\n\n',2),('a\nb',2)]:
+            with self.subTest(text=text):
+                p=self.write(text);r=tool.audit(p,max_lines=max(1,count))
+                self.assertEqual(r['status'],'pass');self.assertEqual(r['summary']['lines_scanned'],count)
+                self.assertEqual(self.call(p,'--max-lines',str(max(1,count)))[0],0)
+        p=self.write('a\nb\n');self.assertEqual(tool.audit(p,max_lines=1)['status'],'error')
+
+    def test_only_lf_separates_lines(self):
+        p=self.write('a\u2028b\u0085c\vd\r')
+        r=tool.audit(p,max_lines=1);self.assertEqual(r['status'],'pass');self.assertEqual(r['summary']['lines_scanned'],1)
+        p=self.write('<<<<<<< ours\n=======\n>>>>>>> theirs\n')
+        r=tool.audit(p,max_lines=3);self.assertEqual(r['summary']['complete_blocks'],1)
+        self.assertEqual(r['findings'][0]['end_line'],3)
+
 if __name__=="__main__":unittest.main()

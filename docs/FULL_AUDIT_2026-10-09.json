@@ -1,0 +1,639 @@
+{
+  "date_utc": "2026-10-09",
+  "platform": "Linux x86_64",
+  "scope": "All 50 tool projects, finite usability and correctness review; not exhaustive security certification.",
+  "new_tool_baseline_commit": "ba546c1aee3ca079fdafe6a5629843369946559f",
+  "new_tool_validated_source": "The containing commit; verify its Actions result separately.",
+  "new_tool_unit_tests_per_runtime": 794,
+  "standalone_checks": 120,
+  "new_tools": [
+    {
+      "tool": "csv-schema-contract",
+      "group": "light",
+      "domain": "data",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 25,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Enforce data-row field limit, not just header limit.",
+      "limit": "Excel CSV subset; 1,000 fields per record; not spreadsheet-formula safety."
+    },
+    {
+      "tool": "jsonl-stream-audit",
+      "group": "strong",
+      "domain": "data",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 23,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Bounded local export, not a live incremental stream."
+    },
+    {
+      "tool": "json-pointer-preflight",
+      "group": "medium",
+      "domain": "data",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 22,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Plain RFC 6901; no fragments, JSONPath or patch application."
+    },
+    {
+      "tool": "toml-overlay-diff",
+      "group": "medium",
+      "domain": "data",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 23,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Explicit shallow/deep policy; not application-specific merging."
+    },
+    {
+      "tool": "xml-namespace-inventory",
+      "group": "medium",
+      "domain": "data",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 25,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Correct locator documentation to element-start lines; regression added.",
+      "limit": "Inventory only; DTD rejected; locations identify element starts."
+    },
+    {
+      "tool": "ini-section-collision-audit",
+      "group": "light",
+      "domain": "data",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 25,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Do not invent a line after terminal LF.",
+      "limit": "Small LF-delimited dialect, no interpolation or inheritance."
+    },
+    {
+      "tool": "unicode-normalization-audit",
+      "group": "light",
+      "domain": "data",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 22,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "NFC and character categories, not confusable detection."
+    },
+    {
+      "tool": "decimal-rounding-reconcile",
+      "group": "strong",
+      "domain": "data",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 22,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Explicit bounded rounding mathematics, not accounting policy."
+    },
+    {
+      "tool": "timestamp-unit-audit",
+      "group": "maximal",
+      "domain": "data",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 22,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Integer Unix seconds/milliseconds/microseconds; ambiguity remains explicit."
+    },
+    {
+      "tool": "record-key-collision-audit",
+      "group": "maximal",
+      "domain": "data",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 25,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Direct scalar keys; not database collation equivalence."
+    },
+    {
+      "tool": "tar-member-preflight",
+      "group": "light",
+      "domain": "filesystem",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 12,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "POSIX metadata audit, plain/gzip TAR; no extraction or payload proof."
+    },
+    {
+      "tool": "portable-path-audit",
+      "group": "medium",
+      "domain": "filesystem",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 11,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Name portability policy, not execution on every target filesystem."
+    },
+    {
+      "tool": "directory-manifest-diff",
+      "group": "strong",
+      "domain": "filesystem",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 11,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Bounded stable trees; not an atomic concurrent snapshot."
+    },
+    {
+      "tool": "symlink-scope-audit",
+      "group": "medium",
+      "domain": "filesystem",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 15,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Accept harmless redundant root-prefix separators/dots without collapsing unsafe parent transitions.",
+      "limit": "POSIX in-memory resolution within selected root; no external lookup."
+    },
+    {
+      "tool": "newline-policy-audit",
+      "group": "maximal",
+      "domain": "filesystem",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 12,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Explicit byte/newline policy, not content semantics."
+    },
+    {
+      "tool": "encoding-roundtrip-audit",
+      "group": "maximal",
+      "domain": "filesystem",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 12,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Explicit encoding required; no automatic detection."
+    },
+    {
+      "tool": "hardlink-size-audit",
+      "group": "strong",
+      "domain": "filesystem",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 12,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Allocated-byte estimate, not compressed/shared physical storage truth."
+    },
+    {
+      "tool": "git-conflict-marker-audit",
+      "group": "medium",
+      "domain": "filesystem",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 15,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Correct terminal-LF line counting.",
+      "limit": "Text marker grammar, no Git invocation or conflict resolution."
+    },
+    {
+      "tool": "shebang-portability-audit",
+      "group": "light",
+      "domain": "filesystem",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 13,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Documented env -S subset, not shell execution."
+    },
+    {
+      "tool": "source-map-reference-audit",
+      "group": "strong",
+      "domain": "filesystem",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 19,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Validate raw sourceRoot and source independently before prefixing.",
+      "limit": "Relative local references only; no VLQ/complete source-map validation."
+    },
+    {
+      "tool": "http-cache-age-lab",
+      "group": "medium",
+      "domain": "protocol",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 17,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Return sanitized JSON/exit 2 for CLI argument errors; retain text help/exit 0.",
+      "limit": "Documented cache-age model; restricted HTTP-date syntax."
+    },
+    {
+      "tool": "retry-budget-lab",
+      "group": "strong",
+      "domain": "protocol",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 15,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Return sanitized JSON/exit 2 for CLI argument errors; retain text help/exit 0.",
+      "limit": "Deterministic schedule; no jitter or real network timing."
+    },
+    {
+      "tool": "cors-response-audit",
+      "group": "maximal",
+      "domain": "protocol",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 22,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Return sanitized JSON/exit 2 for CLI argument errors; retain text help/exit 0.",
+      "limit": "Partial response policy, not browser-conformance testing."
+    },
+    {
+      "tool": "cookie-scope-audit",
+      "group": "strong",
+      "domain": "protocol",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 28,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Return sanitized JSON/exit 2 for CLI argument errors; retain text help/exit 0.",
+      "limit": "Scope model without Public Suffix List/browser storage behavior."
+    },
+    {
+      "tool": "url-authority-audit",
+      "group": "strong",
+      "domain": "protocol",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 26,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Documented urllib/IDNA policy; no DNS or network requests."
+    },
+    {
+      "tool": "http-link-header-kit",
+      "group": "light",
+      "domain": "protocol",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 25,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Return sanitized JSON/exit 2 for CLI argument errors; retain text help/exit 0.",
+      "limit": "Documented Link subset; no target fetching or title* decoding."
+    },
+    {
+      "tool": "content-disposition-filename-kit",
+      "group": "light",
+      "domain": "protocol",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 24,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Return sanitized JSON/exit 2 for CLI argument errors; retain text help/exit 0.",
+      "limit": "Filename hazard heuristics; no download or filesystem creation."
+    },
+    {
+      "tool": "redirect-chain-audit",
+      "group": "maximal",
+      "domain": "protocol",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 35,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Supplied chain only; no redirect fetching or DNS checks."
+    },
+    {
+      "tool": "ip-network-overlap-audit",
+      "group": "maximal",
+      "domain": "protocol",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 21,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "IP prefix arithmetic; not routing/firewall behavior."
+    },
+    {
+      "tool": "multipart-boundary-fixtures",
+      "group": "medium",
+      "domain": "protocol",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 22,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Reject bare-CR delimiters; preserve binary payload; correct offsets documentation and CLI errors.",
+      "limit": "CRLF framing subset; not a full MIME parser; large findings possible."
+    },
+    {
+      "tool": "junit-result-contract",
+      "group": "medium",
+      "domain": "quality",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 17,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Flat non-namespaced JUnit subset, not complete industry schema."
+    },
+    {
+      "tool": "sarif-baseline-diff",
+      "group": "light",
+      "domain": "quality",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 17,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "SARIF subset, first physical location; not all SARIF properties."
+    },
+    {
+      "tool": "coverage-threshold-contract",
+      "group": "strong",
+      "domain": "quality",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 24,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Exact decimal threshold comparison and bounded, sanitized extreme exponents.",
+      "limit": "Supplied counters only; exact bounded decimal thresholds."
+    },
+    {
+      "tool": "unified-diff-preflight",
+      "group": "light",
+      "domain": "quality",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 29,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Text diff structure only; binary unsupported; does not apply patches."
+    },
+    {
+      "tool": "dependency-cycle-audit",
+      "group": "maximal",
+      "domain": "quality",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 19,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Count self-loops inside a multi-node SCC only once per component.",
+      "limit": "Supplied directed graph; no dependency resolution."
+    },
+    {
+      "tool": "artifact-name-matrix-audit",
+      "group": "light",
+      "domain": "quality",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 18,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Naming contract only; not all filesystem equivalences."
+    },
+    {
+      "tool": "sqlite-foreign-key-audit",
+      "group": "strong",
+      "domain": "quality",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 15,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Reject selected parent components before normalization can hide symlinks.",
+      "limit": "Linux offline stable DB only; no WAL sidecars or production operation."
+    },
+    {
+      "tool": "python-import-shadow-audit",
+      "group": "maximal",
+      "domain": "quality",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 15,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Reject selected parent components before normalization can select a different root.",
+      "limit": "Current-runtime name inventory; does not import target code."
+    },
+    {
+      "tool": "translation-placeholder-contract",
+      "group": "maximal",
+      "domain": "quality",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 18,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": null,
+      "limit": "Documented placeholder syntax; not all template languages."
+    },
+    {
+      "tool": "release-asset-contract",
+      "group": "medium",
+      "domain": "quality",
+      "result": "passed_in_documented_scope",
+      "suite_tests_per_python": 21,
+      "tested_python": [
+        "3.12.14",
+        "3.13.5"
+      ],
+      "fix": "Reject hidden-parent traversal and Unicode Cc asset names (DEL/C1 included).",
+      "limit": "POSIX bounded manifest/hash audit; no provenance certification."
+    }
+  ],
+  "historical_tools": [
+    {
+      "tool": "har-redaction-fixtures",
+      "repository": "https://github.com/mytestapp20261001-collab/har-redaction-fixtures",
+      "audited_baseline_commit": "881fe935be0f8fcf62daa0afe18dd16cba8ef6cf",
+      "validated_commit": "b327ae82fada8495a33ebc987cde1916eec1561d",
+      "suite_tests": 30,
+      "result": "passed_in_documented_scope",
+      "changed": true,
+      "limit": "Synthetic known markers only; not general HAR privacy certification."
+    },
+    {
+      "tool": "playwright-run-audit",
+      "repository": "https://github.com/mytestapp20261001-collab/playwright-run-audit",
+      "audited_baseline_commit": "9b9f4032cfd2dc1414ec67f63e941a21e6e06807",
+      "validated_commit": "9b9f4032cfd2dc1414ec67f63e941a21e6e06807",
+      "suite_tests": 28,
+      "result": "passed_in_documented_scope",
+      "changed": false,
+      "limit": "Post-selection runner receipts; not proof of selection correctness or authenticity."
+    },
+    {
+      "tool": "env-loader-audit",
+      "repository": "https://github.com/mytestapp20261001-collab/env-loader-audit",
+      "audited_baseline_commit": "0aeade00933da83c66f1fa65c6f907bfe44359a5",
+      "validated_commit": "0aeade00933da83c66f1fa65c6f907bfe44359a5",
+      "suite_tests": 59,
+      "result": "passed_in_documented_scope",
+      "changed": false,
+      "limit": "POSIX; bounded dotenv/Node model, non-exhaustive startup flags."
+    },
+    {
+      "tool": "resume-download-integrity-kit",
+      "repository": "https://github.com/mytestapp20261001-collab/resume-download-integrity-kit",
+      "audited_baseline_commit": "1856f50cb40d86ed517fd0aafacb006ef218e83b",
+      "validated_commit": "eb4de719b6ccd1322757cd0685c9e7be73b0149a",
+      "suite_tests": 13,
+      "result": "passed_in_documented_scope",
+      "changed": true,
+      "limit": "Trusted adapters and synthetic loopback TCP; not a sandbox or production downloader."
+    },
+    {
+      "tool": "sqlite-wal-restore-lab",
+      "repository": "https://github.com/mytestapp20261001-collab/sqlite-wal-restore-lab",
+      "audited_baseline_commit": "192ae25894933ae297c92706232c02614f6b3a84",
+      "validated_commit": "192ae25894933ae297c92706232c02614f6b3a84",
+      "suite_tests": 15,
+      "result": "passed_in_documented_scope",
+      "changed": false,
+      "limit": "Synthetic SQLite/WAL restoration lab; no live production database."
+    },
+    {
+      "tool": "lsp-position-edit-kit",
+      "repository": "https://github.com/mytestapp20261001-collab/lsp-position-edit-kit",
+      "audited_baseline_commit": "af6354d16a6295b0f2095a70494461490ba2873c",
+      "validated_commit": "af6354d16a6295b0f2095a70494461490ba2873c",
+      "suite_tests": 24,
+      "result": "passed_in_documented_scope",
+      "changed": false,
+      "limit": "13-case trusted-adapter LSP acceptance kit, not full conformance."
+    },
+    {
+      "tool": "zip-member-preflight",
+      "repository": "https://github.com/mytestapp20261001-collab/zip-member-preflight",
+      "audited_baseline_commit": "a253f5b7d9c12a8fc3e5ec99eb80101f04513d13",
+      "validated_commit": "a253f5b7d9c12a8fc3e5ec99eb80101f04513d13",
+      "suite_tests": 46,
+      "result": "passed_in_documented_scope",
+      "changed": false,
+      "limit": "Metadata/name hazards only; no extraction, CRC/content integrity or malware proof."
+    },
+    {
+      "tool": "make-rebuild-contract-kit",
+      "repository": "https://github.com/mytestapp20261001-collab/make-rebuild-contract-kit",
+      "audited_baseline_commit": "56e6aadbcd7d9c78225b23a5466d6c3156b71e74",
+      "validated_commit": "56e6aadbcd7d9c78225b23a5466d6c3156b71e74",
+      "suite_tests": 22,
+      "result": "passed_in_documented_scope",
+      "changed": false,
+      "limit": "GNU Make/GCC build contract; not every build system."
+    },
+    {
+      "tool": "cmake-relocation-lab",
+      "repository": "https://github.com/mytestapp20261001-collab/cmake-relocation-lab",
+      "audited_baseline_commit": "83bb1307f55389eab5bc6c21eea07a601741e694",
+      "validated_commit": "83bb1307f55389eab5bc6c21eea07a601741e694",
+      "suite_tests": 24,
+      "result": "passed_in_documented_scope",
+      "changed": false,
+      "limit": "CMake/GCC Linux relocation lab; no cross-platform packaging guarantee."
+    },
+    {
+      "tool": "protobuf-relay-preservation-lab",
+      "repository": "https://github.com/mytestapp20261001-collab/protobuf-relay-preservation-lab",
+      "audited_baseline_commit": "1428869b82be0c6cf085e5565221affbbd6f4602",
+      "validated_commit": "1ab2026770f3ba387b2ca02aa44adb90593a52b0",
+      "suite_tests": 23,
+      "result": "passed_in_documented_scope",
+      "changed": true,
+      "limit": "One schema pair and fixed semantic projection; not cross-language compatibility proof."
+    }
+  ],
+  "not_tested": [
+    "Windows and macOS execution",
+    "Production/private inputs",
+    "Hostile concurrent filesystem mutation",
+    "Exhaustive protocol or security conformance"
+  ]
+}

@@ -134,6 +134,8 @@ def audit(text, *, require_namespaced_attributes=False, show_names=False):
             bindings[prefix] = uri
             ident = ns_id(uri)
             if len(declarations) < 100:
+                # Expat reports the start of the owning element, not the
+                # individual xmlns attribute in a multiline opening tag.
                 declarations.append({"line": parser.CurrentLineNumber, "namespace_id": ident,
                                      "default_namespace": prefix == "", "rebind": previous is not None and previous != uri})
                 if show_names:

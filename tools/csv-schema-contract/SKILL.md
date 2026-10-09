@@ -31,7 +31,7 @@ Supported types are `string`, ASCII `integer`, lexical finite `decimal` (includi
 
 Uses Python's strict Excel CSV dialect: comma separator, double-quote quoting, doubled quotes. Quoted embedded newlines are supported. Row positions are logical CSV records, including the header as row 1. Header matching is exact and case-sensitive. Duplicate headers fail; checks then use the first occurrence deterministically. Extra columns can be allowed explicitly; order checking compares only declared columns. CSV dialect variants and spreadsheet formula-injection safety are outside scope.
 
-1,000 columns and 50,000 data records; fields at most 65,536 characters. Malformed CSV is input error 2. A header-only file is permitted. BOMs are not removed. The `csv` parser's dialect behavior is the contract, not a claim of universal RFC 4180 compliance.
+At most 1,000 fields in the header and in each data record, and 50,000 data records; fields at most 65,536 characters. Malformed CSV or a record exceeding the field-count limit is input error 2. Width mismatches within that limit are audit findings (exit 1). A header-only file is permitted. BOMs are not removed. The `csv` parser's dialect behavior is the contract, not a claim of universal RFC 4180 compliance.
 
 ## Technical entry point
 

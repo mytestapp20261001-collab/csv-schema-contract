@@ -7,7 +7,10 @@ requirements before use. No tool contacts MyTest or uploads your inputs.
 
 This collection contains **40 new tool projects**. The ten pre-existing public
 MyTest projects are listed separately in [the historical inventory](docs/historical-baseline.json)
-and are unchanged. Fixtures, scripts and documentation are not counted as tools.
+with their original guidance retained. A subsequent full usability audit also
+repairs defects in historical tools where needed; the historical inventory is
+a dated baseline, not a claim that those repositories never change. Fixtures,
+scripts and documentation are not counted as tools.
 
 ## Start with a real problem
 
@@ -74,6 +77,12 @@ README example that writes a synthetic fixture is a separate explicit step.
 - [python-import-shadow-audit](tools/python-import-shadow-audit/README.md)
 - [translation-placeholder-contract](tools/translation-placeholder-contract/README.md)
 - [release-asset-contract](tools/release-asset-contract/README.md)
+
+## Full usability audit
+
+See the [50-tool acceptance report](docs/FULL_AUDIT_2026-10-09.md) and
+[machine-readable results](docs/FULL_AUDIT_2026-10-09.json) for exact historical
+versions, per-tool checks, corrections, and tested-platform limits.
 
 ## Verify the collection
 

@@ -114,7 +114,7 @@ def audit(data):
     cyclic = sorted((c for c in components if len(c) > 1), key=lambda c: c[0])
     for component in cyclic:
         findings.append(finding("dependency_cycle", node_indices=component))
-    return report(findings, nodes=len(nodes), edges=len(edges), strongly_connected_components=len(components), cyclic_components=len(cyclic) + len(selfloops))
+    return report(findings, nodes=len(nodes), edges=len(edges), strongly_connected_components=len(components), cyclic_components=sum(len(c) > 1 or c[0] in selfloops for c in components))
 
 def configure(parser):
     parser.add_argument("input", help="local graph JSON")

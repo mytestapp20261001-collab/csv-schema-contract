@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import re
 import stat
+import unicodedata
 
 TOOL = "release-asset-contract"
 MANIFEST_LIMIT = 1048576
@@ -35,10 +36,18 @@ def result(findings=None, summary=None, error=None):
             "errors": [{"code": "bad_input", "message": error}] if error else []}
 
 
+def selected_absolute(path):
+    """Reject parent traversal before normalization can hide symlink components."""
+    raw = Path(os.fspath(path))
+    if ".." in raw.parts:
+        raise InputError("Selected paths must not contain parent (..) components")
+    return Path(os.path.abspath(raw))
+
+
 def open_directory(path):
     if not hasattr(os, "O_NOFOLLOW") or os.open not in os.supports_dir_fd:
         raise InputError("This tool requires POSIX O_NOFOLLOW and dir_fd support")
-    absolute = Path(os.path.abspath(os.fspath(path)))
+    absolute = selected_absolute(path)
     fd = os.open(absolute.anchor, os.O_RDONLY | os.O_DIRECTORY)
     try:
         for part in absolute.parts[1:]:
@@ -88,7 +97,7 @@ def parse_finite_float(value):
 
 
 def read_manifest(path):
-    absolute = Path(os.path.abspath(os.fspath(path)))
+    absolute = selected_absolute(path)
     parent = open_directory(absolute.parent)
     fd = None
     try:
@@ -134,7 +143,7 @@ def validate_manifest(document, max_files, max_asset_bytes, max_total_bytes):
         path = item["path"]
         if not isinstance(path, str) or not 1 <= len(path) <= 4096:
             raise InputError("Asset path must be a nonempty string of at most 4096 characters")
-        if "\\" in path or ":" in path or any(ord(c) < 32 or 0xD800 <= ord(c) <= 0xDFFF for c in path):
+        if "\\" in path or ":" in path or any(unicodedata.category(c) == "Cc" or 0xD800 <= ord(c) <= 0xDFFF for c in path):
             raise InputError("Asset paths must be safe relative POSIX paths")
         if any(part in ("", ".", "..") for part in path.split("/")):
             raise InputError("Asset paths cannot be absolute, empty, or contain dot components")

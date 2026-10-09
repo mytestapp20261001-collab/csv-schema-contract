@@ -4,7 +4,7 @@ Locate dangling, cyclic, and out-of-root symlink chains without opening their ta
 
 ## Scope
 
-Builds a bounded lstat/readlink inventory of the chosen directory, then resolves links only against that in-memory inventory. Handles links to directories, relative `..`, absolute links that start within the selected root, non-directory components, cycles, and hop exhaustion. Root and ancestor symlinks are refused. An outside target is classified before any outside lookup; target strings are not included in output.
+Builds a bounded lstat/readlink inventory of the chosen directory, then resolves links only against that in-memory inventory. Handles links to directories, relative `..`, absolute links that start within the selected root, non-directory components, cycles, and hop exhaustion. Redundant separators and dot components in an absolute in-root prefix are accepted; parent components are never normalized away across scope or symlink boundaries. Root and ancestor symlinks are refused. An outside target is classified before any outside lookup; target strings are not included in output.
 
 A repeated resolution state is a cycle; a growing chain may instead hit the hop limit. No target file content is ever read. The inventory is a point-in-time approximation, not an atomic snapshot; concurrent changes, bind mounts, hardlinks, and mount namespaces are not a security boundary certified by this tool. Out-of-root links are findings even when intentional. No links are removed or rewritten.
 

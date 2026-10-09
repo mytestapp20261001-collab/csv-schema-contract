@@ -123,4 +123,20 @@ class AuditTests(unittest.TestCase):
     def test_values_redacted(self):
         self.assertNotIn('SUPERSECRET',json.dumps(tool.audit('[a]\nx=SUPERSECRET\nx=other')))
 
+    def test_full_line_limit_accepts_terminal_lf(self):
+        text = '[x]\n' + '# comment\n' * 49998 + 'key=value'
+        for ending in ('', '\n'):
+            with self.subTest(ending=repr(ending)):
+                self.assertEqual(tool.audit(text + ending)['status'], 'pass')
+
+    def test_line_limit_counts_real_blank_lines(self):
+        text = '[x]\n' + '\n' * 49999
+        self.assertEqual(tool.audit(text)['status'], 'pass')
+        with self.assertRaisesRegex(tool.InputError, 'line_count_limit'):
+            tool.audit(text + '\n')
+
+    def test_terminal_crlf_counts_once(self):
+        text = '[x]\r\n' + '# comment\r\n' * 49998 + 'key=value\r\n'
+        self.assertEqual(tool.audit(text)['status'], 'pass')
+
 if __name__ == '__main__': unittest.main()

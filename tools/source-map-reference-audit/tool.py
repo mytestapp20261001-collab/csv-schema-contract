@@ -94,6 +94,12 @@ def audit(path, *, root,check_embedded_files=False,max_bytes=16777216,max_source
     base=os.path.relpath(os.path.dirname(map_path),root_path)
     base_parts=[] if base=='.' else base.split(os.sep)
     prefix=(source_root+('' if source_root.endswith('/') else '/')) if source_root else ''
+    # Validate each raw URL-path before prefixing; a relative prefix must not
+    # disguise a source URL, absolute path, drive path, or other rejected form.
+    prefix_code=None
+    if source_root:
+        _,prefix_code=local_parts(source_root)
+        if prefix_code:report.add(prefix_code,field='sourceRoot')
     checked=embedded=total=0;seen={}
     with anchored(root,True) as root_fd:
         for index,source in enumerate(sources):
@@ -102,6 +108,9 @@ def audit(path, *, root,check_embedded_files=False,max_bytes=16777216,max_source
             if source is None:
                 if content is None:report.add('source_without_reference_or_content',source=index)
                 continue
+            _,code=local_parts(source)
+            if code:report.add(code,source=index);continue
+            if prefix_code:continue
             parts,code=local_parts(prefix+source)
             if code:report.add(code,source=index);continue
             full=base_parts+parts

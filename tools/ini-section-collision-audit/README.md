@@ -37,7 +37,7 @@ All input files must be regular files, UTF-8 encoded, and no larger than 8 MiB e
 
 ## Tool-specific limits and non-goals
 
-50,000 LF-delimited lines and 65,536 characters per nonblank/noncomment data line. At least one section is required; an empty section may have no keys. Unsupported/malformed syntax exits 2 rather than making a speculative merge. This cannot certify how a third-party application's INI dialect treats the same file.
+50,000 LF-delimited physical lines (a terminal LF does not add a synthetic line; actual blank lines still count) and 65,536 characters per nonblank/noncomment data line. At least one section is required; an empty section may have no keys. Unsupported/malformed syntax exits 2 rather than making a speculative merge. This cannot certify how a third-party application's INI dialect treats the same file.
 
 ## Python API
 

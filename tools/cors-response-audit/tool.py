@@ -14,6 +14,11 @@ TOKEN = re.compile(r"[!#$%&'*+.^_`|~0-9A-Za-z-]+\Z")
 class InputError(ValueError):
     pass
 
+class Parser(argparse.ArgumentParser):
+    def error(self, message):
+        # argparse messages may contain raw options, paths, or caller secrets.
+        raise InputError("invalid command-line arguments")
+
 def require(condition, message):
     if not condition:
         raise InputError(message)
@@ -51,11 +56,12 @@ def unique_object(pairs):
     return obj
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = Parser(description=__doc__)
     parser.add_argument("--input", default="-", help="JSON file, or - for stdin (maximum 256 KiB)")
     parser.add_argument("--pretty", action="store_true", help="indent JSON output")
-    args = parser.parse_args(argv)
+    args = None
     try:
+        args = parser.parse_args(argv)
         if args.input == "-":
             raw = sys.stdin.buffer.read(MAX_BYTES + 1)
         else:
@@ -74,7 +80,7 @@ def main(argv=None):
         code = 2
     else:
         code = 0 if out["ok"] else 1
-    print(json.dumps(out, sort_keys=True, ensure_ascii=True, allow_nan=False, indent=2 if args.pretty else None))
+    print(json.dumps(out, sort_keys=True, ensure_ascii=True, allow_nan=False, indent=2 if args is not None and args.pretty else None))
     return code
 
 from urllib.parse import urlsplit
