@@ -1,0 +1,33 @@
+{
+  "origin": "https://app.example",
+  "credentials": "include",
+  "preflight": true,
+  "method": "PUT",
+  "unsafe_request_headers": [
+    "Authorization",
+    "X-Trace"
+  ],
+  "status": 204,
+  "response_headers": [
+    [
+      "Access-Control-Allow-Origin",
+      "https://app.example"
+    ],
+    [
+      "Access-Control-Allow-Credentials",
+      "true"
+    ],
+    [
+      "Access-Control-Allow-Methods",
+      "GET, PUT"
+    ],
+    [
+      "Access-Control-Allow-Headers",
+      "Authorization, X-Trace"
+    ],
+    [
+      "Vary",
+      "Origin"
+    ]
+  ]
+}

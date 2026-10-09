@@ -1,0 +1,39 @@
+{
+  "adversarial_cli_and_read_only_cases_in_tests": 22,
+  "all_expected_outcomes_verified": true,
+  "commands": [
+    {
+      "actual_exit": 0,
+      "command": "python3 tool.py examples/pass.csv --contract examples/contract.json",
+      "expected_exit": 0,
+      "output_sha256": "f5de2f5d0b12bf2e2686c903e35e1614e08a83bd5fdab9dd7a6dba872243cb50",
+      "status": "pass"
+    },
+    {
+      "actual_exit": 1,
+      "command": "python3 tool.py examples/fail.csv --contract examples/contract.json",
+      "expected_exit": 1,
+      "output_sha256": "123e322f4cf44c244e2c7fce403e5046de12850b68a148ec86cb79a182093750",
+      "status": "fail"
+    },
+    {
+      "actual_exit": 2,
+      "command": "python3 tool.py examples/malformed.csv --contract examples/contract.json",
+      "expected_exit": 2,
+      "output_sha256": "7bfc07129d4aa92b8f0ed1ec19ac64680d0e67a877a6b2bc50a058f31f58ae0c",
+      "status": "error"
+    },
+    {
+      "actual_exit": 0,
+      "command": "python3 tool.py --help",
+      "expected_exit": 0
+    },
+    {
+      "actual_exit": 0,
+      "command": "python3 -m unittest -v test_tool.py",
+      "expected_exit": 0,
+      "test_count": 23
+    }
+  ],
+  "runtime": "3.12.14"
+}

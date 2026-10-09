@@ -1,0 +1,8 @@
+{
+  "set_cookie": "__Host-session=synthetic; Secure; HttpOnly; Path=/; SameSite=Lax",
+  "response_url": "https://app.example/login",
+  "request_url": "https://app.example/account",
+  "same_site": true,
+  "top_level_navigation": false,
+  "safe_method": true
+}

@@ -1,0 +1,57 @@
+{
+  "verified_at": "2026-10-09T06:29:00Z",
+  "unchanged": true,
+  "scope": "Ten separate pre-existing public projects; 20 was an earlier proposal, not a delivered count. Labels are qualitative relative to the new templates, not calibrated measurements.",
+  "projects": [
+    {
+      "repository": "mytestapp20261001-collab/har-redaction-fixtures",
+      "observed_commit_prefix": "881fe935",
+      "qualitative_guidance": "light"
+    },
+    {
+      "repository": "mytestapp20261001-collab/playwright-run-audit",
+      "observed_commit_prefix": "9b9f4032",
+      "qualitative_guidance": "light"
+    },
+    {
+      "repository": "mytestapp20261001-collab/env-loader-audit",
+      "observed_commit_prefix": "0aeade00",
+      "qualitative_guidance": "light"
+    },
+    {
+      "repository": "mytestapp20261001-collab/resume-download-integrity-kit",
+      "observed_commit_prefix": "1856f50c",
+      "qualitative_guidance": "medium"
+    },
+    {
+      "repository": "mytestapp20261001-collab/sqlite-wal-restore-lab",
+      "observed_commit_prefix": "192ae258",
+      "qualitative_guidance": "light"
+    },
+    {
+      "repository": "mytestapp20261001-collab/lsp-position-edit-kit",
+      "observed_commit_prefix": "af6354d1",
+      "qualitative_guidance": "medium"
+    },
+    {
+      "repository": "mytestapp20261001-collab/zip-member-preflight",
+      "observed_commit_prefix": "a253f5b7",
+      "qualitative_guidance": "medium"
+    },
+    {
+      "repository": "mytestapp20261001-collab/make-rebuild-contract-kit",
+      "observed_commit_prefix": "56e6aadb",
+      "qualitative_guidance": "medium"
+    },
+    {
+      "repository": "mytestapp20261001-collab/cmake-relocation-lab",
+      "observed_commit_prefix": "83bb1307",
+      "qualitative_guidance": "medium"
+    },
+    {
+      "repository": "mytestapp20261001-collab/protobuf-relay-preservation-lab",
+      "observed_commit_prefix": "1428869b",
+      "qualitative_guidance": "light"
+    }
+  ]
+}

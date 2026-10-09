@@ -1,0 +1,11 @@
+{
+  "now": 1704067200,
+  "deadline": 1704067208,
+  "completed_attempts": 1,
+  "max_attempts": 3,
+  "base_delay_seconds": 2,
+  "cap_delay_seconds": 20,
+  "attempt_budget_seconds": 5,
+  "retry_safe": true,
+  "retry_after": "5"
+}
