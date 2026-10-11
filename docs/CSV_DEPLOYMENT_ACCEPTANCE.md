@@ -1,8 +1,9 @@
 # csv-schema-contract: deployment acceptance
 
 Accepted at the fixed preceding publication commit on 2026-10-11. This receipt
-does not reference its own containing commit. The observation task remains a
-separate coordinator action and was not changed by this publication.
+does not reference its own containing commit. The existing observation prompt was updated on 2026-10-11 at 02:03:43 UTC
+to the fixed 50-repository slug-and-ID allowlist. Its enabled state and original
+daily 09:00 Asia/Shanghai schedule were preserved; no new task was created.
 
 - Repository: [mytestapp20261001-collab/csv-schema-contract](https://github.com/mytestapp20261001-collab/csv-schema-contract), public, main; ID `1411411288` and owner ID `337718267` unchanged.
 - Renamed from `mytest-engineering-toolbox`; the old URL redirects to this same identity.

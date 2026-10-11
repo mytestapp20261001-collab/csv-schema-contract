@@ -3,7 +3,8 @@
 The 40 preassigned split tools are accepted at fixed published commits with 80
 successful Python CI jobs. Ten historical tool repositories remain unchanged;
 they were not rerun in this migration. All 50 identities and HEADs were rechecked
-on 2026-10-11. The observation-task update remains separate and pending.
+on 2026-10-11. The existing observation prompt was updated at 2026-10-11T02:03:43Z
+to the fixed 50-repository allowlist, preserving its original daily schedule.
 
 See [39-repository receipts](PUBLISHED_REPOSITORIES_39.json),
 [complete 50-entry inventory](REPOSITORY_INVENTORY_50.json),

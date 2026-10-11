@@ -3,8 +3,12 @@
 The [39 new-repository receipts](PUBLISHED_REPOSITORIES_39.json) and
 [csv deployment receipt](CSV_DEPLOYMENT_ACCEPTANCE.md) establish acceptance of 40
 split tools with 80 successful Python CI jobs. Ten historical repositories remain
-unchanged, for 50 independent tool identities. The coordinator separately updates
-the existing observation task; this document does not claim that update happened.
+unchanged, for 50 independent tool identities. The existing observation prompt was updated at 2026-10-11T02:03:43Z
+from its former 11-repository scope to the fixed 50-repository slug-and-ID allowlist.
+Its original enabled state and daily 09:00 Asia/Shanghai schedule were preserved;
+no new task was created. Privacy limits and the separate new, reused-csv and
+historical cohorts remain unchanged. This records configuration, not evidence
+that a later scheduled observation has run.
 
 The [catalog](tool-catalog.json) keeps the frozen original assignment date
 `2026-10-09`, seed `20261009`, domains and ten tools each in light, medium, strong

@@ -9,7 +9,7 @@
     "reused_csv_repository_pending": 0,
     "historical_repositories_unchanged_by_migration": 10,
     "all_50_standalone_release_accepted": true,
-    "observation_task_update": "pending_coordinator; not changed by this publication"
+    "observation_task_update": "updated_2026-10-11T02:03:43Z; existing observation prompt expanded to fixed 50-repository slug-and-ID allowlist; original enabled state and daily 09:00 Asia/Shanghai schedule preserved; no new task"
   },
   "new_group_counts": {
     "light": 10,

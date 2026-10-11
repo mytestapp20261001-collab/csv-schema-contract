@@ -12,7 +12,8 @@ commit, with two successful Python CI jobs, as recorded in
 The [complete inventory](REPOSITORY_INVENTORY_50.json) contains exactly 40 accepted
 split-tool identities plus ten unchanged historical identities. All 50 IDs and
 HEADs were rechecked on 2026-10-11; original grouping and source evidence remain
-unchanged. The observation task has not been updated by this publication.
+unchanged. The existing observation prompt was updated at 2026-10-11T02:03:43Z
+to the fixed 50-repository slug-and-ID allowlist; the original schedule was preserved.
 
 ## Fixed source and unchanged csv behavior
 
