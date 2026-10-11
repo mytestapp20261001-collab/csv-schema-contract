@@ -1,12 +1,10 @@
 # Observation boundaries during standalone publication
 
-The [39 new-repository receipts](PUBLISHED_REPOSITORIES_39.json) are accepted, with
-78 successful Python CI jobs at fixed published commits. The reused csv identity's
-rename, final normal commit and remote CI require
-[actual subsequent acceptance](CSV_DEPLOYMENT_ACCEPTANCE.md). The coordinator
-updates the existing observation task's formal prompt only after all intended
-standalone tools are actually accepted. This preparation creates, edits and runs
-no task, and does not claim monitoring completion.
+The [39 new-repository receipts](PUBLISHED_REPOSITORIES_39.json) and
+[csv deployment receipt](CSV_DEPLOYMENT_ACCEPTANCE.md) establish acceptance of 40
+split tools with 80 successful Python CI jobs. Ten historical repositories remain
+unchanged, for 50 independent tool identities. The coordinator separately updates
+the existing observation task; this document does not claim that update happened.
 
 The [catalog](tool-catalog.json) keeps the frozen original assignment date
 `2026-10-09`, seed `20261009`, domains and ten tools each in light, medium, strong
@@ -15,8 +13,7 @@ tool homepages; csv retains its own light invitation. No executable invitation,
 automatic visit, new browsing/play authority or stronger promotion is added.
 
 Record the collection period and standalone period separately. The 39 receipt
-timestamps identify their new publication cohorts; csv's actual boundary remains
-pending. Never directly mix old collection exposures or outcomes into standalone
+timestamps identify their new publication cohorts; csv's publication boundary is `2026-10-11T01:57:57Z`. Never directly mix old collection exposures or outcomes into standalone
 totals. csv inherits repository ID `1411411288`, all collection history and past
 exposure, and hosts the neutral index, adding distinct traffic. Record these
 differences before comparison; a renamed old identity is not a wholly new sample.
@@ -47,4 +44,4 @@ fixed when repairing reproducible defects.
 
 The [dated original plan](history/OBSERVATION_PLAN.md) describes the old collection
 layout; [migration evidence](MIGRATION.md) and the csv acceptance document govern
-the current pending boundary. The old plan is history, not proof of completion.
+the accepted publication boundary. The old plan is history, not proof of completion.

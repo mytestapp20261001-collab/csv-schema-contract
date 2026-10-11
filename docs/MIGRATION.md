@@ -5,22 +5,14 @@ commits, root trees and CI runs in [their publication receipts](PUBLISHED_REPOSI
 The coordinator's mapping is dated `2026-10-10T14:54:33.148Z`. Read-only official
 GitHub repository/main/job queries independently confirmed all 39 IDs, commits,
 trees and 78 successful CPython 3.12.14/3.13.5 jobs during this document preparation.
-Those jobs verify the 39 published commits; they do not verify csv's future commit.
+The reused csv repository is now renamed and accepted at its fixed published
+commit, with two successful Python CI jobs, as recorded in
+[csv deployment acceptance](CSV_DEPLOYMENT_ACCEPTANCE.md).
 
-`csv-schema-contract` remains a locally verified publication candidate. Its existing
-identity is currently `mytestapp20261001-collab/mytest-engineering-toolbox`, ID
-`1411411288`, main `1286096c10a23bbb04aca83679ae3c31f3326030`. The coordinator will
-normally rename it to `csv-schema-contract` and commit the complete root tree on
-existing main. Rename completion, the actual final commit/time and its two remote
-Python CI jobs require real receipts at [csv deployment acceptance](CSV_DEPLOYMENT_ACCEPTANCE.md).
-All 50 standalone tools and the observation-task update are not yet declared complete.
-
-The [complete inventory](REPOSITORY_INVENTORY_50.json) contains exactly 40 new-tool
-identities (39 accepted and one reused identity pending) plus ten historical
-identities. Docs, fixtures, scripts, indexes and the former collection name add no
-tool count. All 50 repository IDs are explicit; none of the 39 accepted IDs is null.
-The catalog's csv URL names its currently available collection identity and gives
-the intended rename separately, rather than claiming a pending URL already exists.
+The [complete inventory](REPOSITORY_INVENTORY_50.json) contains exactly 40 accepted
+split-tool identities plus ten unchanged historical identities. All 50 IDs and
+HEADs were rechecked on 2026-10-11; original grouping and source evidence remain
+unchanged. The observation task has not been updated by this publication.
 
 ## Fixed source and unchanged csv behavior
 
@@ -68,12 +60,9 @@ identity or recreate the former collection name. Preserve its redirect so the
 fixed-SHA source links remain available after rename. Historical collection files
 remain in old commits; the new root contains only csv and neutral migration docs.
 
-The coordinator owns actual rename/publication/remote acceptance and the formal
-existing observation prompt update after all final receipts. This executor writes
-only in `/tmp/mytest-tools-split-20261010`, restores only its own previously delivered
-Library artifact, and performs public read-only verification. No main account
-write, mounted MyTest source/state/database/Site access, owner gate, new credential,
-runtime installation, fee, remote write or scheduled-task mutation is involved.
+Rename, normal publication and remote acceptance are documented in the dated
+csv receipt. The coordinator separately owns the existing observation prompt.
+The main MyTest project and historical repositories were not modified.
 
 ## Observation and verification boundaries
 
@@ -98,4 +87,4 @@ collection, cross-site linkage, unsolicited contact or game recording is added.
 Local csv acceptance covers Linux x86_64 CPython 3.12.14 and 3.13.5 at repository
 root and external working directories. It does not claim Windows/macOS,
 production/private-input, hostile-concurrency or exhaustive security conformance.
-Actual csv remote CI remains pending until its future published commit is checked.
+Actual csv remote CI passed at the fixed commit documented in the deployment receipt.

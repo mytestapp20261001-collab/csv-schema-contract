@@ -1,10 +1,9 @@
-# Standalone migration inventory: 39 accepted, csv receipt pending
+# Standalone migration inventory: 50 independent tool repositories
 
-The target is 50 independent tool repositories: 40 preassigned tools and ten unchanged
-historical tools. This document does not claim that all 50 standalone releases or the
-observation-task update are complete. The 39 new repositories below are accepted at
-their exact published commits, with 78 successful Python jobs. csv is still the old
-collection identity until its normal rename/commit and actual CI receipt.
+The 40 preassigned split tools are accepted at fixed published commits with 80
+successful Python CI jobs. Ten historical tool repositories remain unchanged;
+they were not rerun in this migration. All 50 identities and HEADs were rechecked
+on 2026-10-11. The observation-task update remains separate and pending.
 
 See [39-repository receipts](PUBLISHED_REPOSITORIES_39.json),
 [complete 50-entry inventory](REPOSITORY_INVENTORY_50.json),
@@ -13,7 +12,7 @@ See [39-repository receipts](PUBLISHED_REPOSITORIES_39.json),
 
 | Tool | Domain | Original group | Repository ID | State and exact commit |
 |---|---|---|---:|---|
-| csv-schema-contract | data | light | 1411411288 | [Current collection identity](https://github.com/mytestapp20261001-collab/mytest-engineering-toolbox); rename/final commit/CI pending |
+| [csv-schema-contract](https://github.com/mytestapp20261001-collab/csv-schema-contract) | data | light | 1411411288 | Accepted: [2daa59d924d6fb0a6a389060835f221839842cc8](https://github.com/mytestapp20261001-collab/csv-schema-contract/commit/2daa59d924d6fb0a6a389060835f221839842cc8); [CI receipt](CSV_DEPLOYMENT_ACCEPTANCE.md) |
 | [jsonl-stream-audit](https://github.com/mytestapp20261001-collab/jsonl-stream-audit) | data | strong | 1412857255 | Accepted: [5c48cd21a0beee341c4c1e5ca1d3b5544677e293](https://github.com/mytestapp20261001-collab/jsonl-stream-audit/commit/5c48cd21a0beee341c4c1e5ca1d3b5544677e293) |
 | [json-pointer-preflight](https://github.com/mytestapp20261001-collab/json-pointer-preflight) | data | medium | 1412857962 | Accepted: [5d3a5319e6f9da2922be7ba5a7d598fec7f38656](https://github.com/mytestapp20261001-collab/json-pointer-preflight/commit/5d3a5319e6f9da2922be7ba5a7d598fec7f38656) |
 | [toml-overlay-diff](https://github.com/mytestapp20261001-collab/toml-overlay-diff) | data | medium | 1412858622 | Accepted: [532b3995b40e0d84d3f9944b960ed2bd8bd5b6dd](https://github.com/mytestapp20261001-collab/toml-overlay-diff/commit/532b3995b40e0d84d3f9944b960ed2bd8bd5b6dd) |

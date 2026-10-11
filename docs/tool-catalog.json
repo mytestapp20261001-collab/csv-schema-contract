@@ -11,16 +11,21 @@
       "domain": "data",
       "guidance_group": "light",
       "path": ".",
-      "status": "local_candidate_verified; rename_normal_commit_and_remote_ci_receipt_pending",
+      "status": "accepted_at_fixed_published_commit; see deployment receipt",
       "source_path": "tools/csv-schema-contract",
       "source_commit": "1286096c10a23bbb04aca83679ae3c31f3326030",
-      "repository": "mytestapp20261001-collab/mytest-engineering-toolbox",
-      "repository_url": "https://github.com/mytestapp20261001-collab/mytest-engineering-toolbox",
+      "repository": "mytestapp20261001-collab/csv-schema-contract",
+      "repository_url": "https://github.com/mytestapp20261001-collab/csv-schema-contract",
       "repository_id": 1411411288,
       "intended_repository": "mytestapp20261001-collab/csv-schema-contract",
       "intended_repository_url": "https://github.com/mytestapp20261001-collab/csv-schema-contract",
-      "current_remote_main": "1286096c10a23bbb04aca83679ae3c31f3326030",
-      "deployment_receipt_path": "docs/CSV_DEPLOYMENT_ACCEPTANCE.md"
+      "current_remote_main": "2daa59d924d6fb0a6a389060835f221839842cc8",
+      "deployment_receipt_path": "docs/CSV_DEPLOYMENT_ACCEPTANCE.md",
+      "published_sha": "2daa59d924d6fb0a6a389060835f221839842cc8",
+      "tree_sha": "a44d0dea867693b461b092a2737abff915736bc5",
+      "published_at": "2026-10-11T01:57:57Z",
+      "ci_url": "https://github.com/mytestapp20261001-collab/csv-schema-contract/actions/runs/38103591190",
+      "ci_completed_at": "2026-10-11T01:58:24Z"
     },
     {
       "slug": "jsonl-stream-audit",
@@ -725,15 +730,40 @@
       "verified_at": "2026-10-10T14:54:33.148Z"
     }
   ],
-  "layout": "39 accepted standalone repositories; csv reuse pending",
+  "layout": "40 accepted standalone tools plus ten unchanged historical repositories in the full inventory",
   "source_commit": "1286096c10a23bbb04aca83679ae3c31f3326030",
   "migration_status": {
     "target_tool_repository_count": 50,
-    "new_repositories_accepted": 39,
-    "new_repositories_successful_python_ci_jobs": 78,
-    "reused_csv_repository_pending": 1,
+    "new_repositories_accepted": 40,
+    "new_repositories_successful_python_ci_jobs": 80,
+    "reused_csv_repository_pending": 0,
     "historical_repositories_unchanged_by_migration": 10,
-    "all_50_standalone_release_accepted": false,
-    "observation_task_update": "pending_coordinator_after_all_50_acceptance"
+    "all_50_standalone_release_accepted": true,
+    "observation_task_update": "pending_coordinator; not changed by this publication"
+  },
+  "csv_deployment_acceptance": {
+    "repository": "mytestapp20261001-collab/csv-schema-contract",
+    "repository_id": 1411411288,
+    "published_commit": "2daa59d924d6fb0a6a389060835f221839842cc8",
+    "published_tree": "a44d0dea867693b461b092a2737abff915736bc5",
+    "published_at": "2026-10-11T01:57:57Z",
+    "ci_url": "https://github.com/mytestapp20261001-collab/csv-schema-contract/actions/runs/38103591190",
+    "ci_completed_at": "2026-10-11T01:58:24Z",
+    "ci_jobs": [
+      {
+        "id": 114364354075,
+        "name": "test (3.13.5)",
+        "conclusion": "success",
+        "url": "https://github.com/mytestapp20261001-collab/csv-schema-contract/actions/runs/38103591190/job/114364354075"
+      },
+      {
+        "id": 114364354239,
+        "name": "test (3.12.14)",
+        "conclusion": "success",
+        "url": "https://github.com/mytestapp20261001-collab/csv-schema-contract/actions/runs/38103591190/job/114364354239"
+      }
+    ],
+    "identity_and_heads_verified_at": "2026-10-11T01:59:52.861Z",
+    "receipt_scope": "References the preceding published commit, not the commit containing this receipt."
   }
 }
