@@ -1,1 +1,0 @@
-<testsuites tests="2" failures="0" errors="0" skipped="1"><testsuite name="unit" tests="2" failures="0" errors="0" skipped="1"><testcase classname="Demo" name="a"/><testcase classname="Demo" name="b"><skipped/></testcase></testsuite></testsuites>

@@ -25,8 +25,10 @@ jobs:
           python --version
           git rev-parse HEAD
       - name: Run independent tool tests
-        run: python -B scripts/run_tests.py
-      - name: Validate inventory and optional guidance
-        run: python -B scripts/validate_catalog.py
+        run: python -B -m unittest discover -s . -p test_tool.py -v
+      - name: Validate standalone source and documentation
+        run: python -B scripts/validate_release.py
+      - name: Run README synthetic examples and CLI checks
+        run: python -B scripts/run_readme_checks.py
       - name: Confirm tests did not modify tracked files
         run: git diff --exit-code

@@ -1,6 +1,0 @@
---- a/demo.txt
-+++ b/demo.txt
-@@ -1,2 +1,2 @@
- keep
--old
-+new

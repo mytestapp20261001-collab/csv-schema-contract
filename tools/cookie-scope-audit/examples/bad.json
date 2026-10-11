@@ -1,8 +1,0 @@
-{
-  "set_cookie": "session=synthetic; Domain=other.example; Path=/admin; SameSite=None",
-  "response_url": "https://app.example/login",
-  "request_url": "http://app.example/public",
-  "same_site": false,
-  "top_level_navigation": false,
-  "safe_method": false
-}

@@ -1,0 +1,182 @@
+{
+  "schema_version": 2,
+  "slug": "csv-schema-contract",
+  "domain": "data",
+  "guidance_group": "light",
+  "source_commit": "1286096c10a23bbb04aca83679ae3c31f3326030",
+  "source_repository": "mytestapp20261001-collab/mytest-engineering-toolbox",
+  "source_repository_id": 1411411288,
+  "source_path": "tools/csv-schema-contract",
+  "root_path": ".",
+  "publication_status": "local_candidate_verified; rename_normal_commit_and_remote_ci_receipt_pending",
+  "expected_repository": "mytestapp20261001-collab/csv-schema-contract",
+  "repository_id": 1411411288,
+  "preserved_files": [
+    {
+      "path": "README.md",
+      "size_bytes": 5003,
+      "sha256": "efb0be0024b5be3d1ccdeb50a678607f301d44aa4caaa4b22cbcbec279f9474e",
+      "git_blob_sha1": "79e99e20a9ad2b0e786b5f5ca304aa663ccde30b",
+      "utf8": true,
+      "source_path": "tools/csv-schema-contract/README.md"
+    },
+    {
+      "path": "SKILL.md",
+      "size_bytes": 4339,
+      "sha256": "4f9574950159f5597c6be1306371fe8a6ce055df8b007ca9bf5f75181f1bdd2b",
+      "git_blob_sha1": "adbdc2c196895061325f90d7b00c0c5652de38ae",
+      "utf8": true,
+      "source_path": "tools/csv-schema-contract/SKILL.md"
+    },
+    {
+      "path": "examples/contract.json",
+      "size_bytes": 281,
+      "sha256": "20d06e003578144c3c6217a0a77f3d8a5a1e70c0daed22cb76081a03fc2c23d5",
+      "git_blob_sha1": "4fad351bf9c555665e3f4b3a47b59e64059637ab",
+      "utf8": true,
+      "source_path": "tools/csv-schema-contract/examples/contract.json"
+    },
+    {
+      "path": "examples/fail.csv",
+      "size_bytes": 50,
+      "sha256": "dfdd3166bedb4de18b7dd655f5864d1c7b0e6bd91075d4d3975a6ecc29c9262b",
+      "git_blob_sha1": "e1f5d081bcb05d8c06f9b56b68c5b14b37fe5815",
+      "utf8": true,
+      "source_path": "tools/csv-schema-contract/examples/fail.csv"
+    },
+    {
+      "path": "examples/malformed.csv",
+      "size_bytes": 17,
+      "sha256": "f047e37fc23a69037172c61cecb5ce1bb459abf70200d68c82dc8dd1b2b28343",
+      "git_blob_sha1": "eea0cd2548d8e4e3bb71ba33480bed2acfaaaa74",
+      "utf8": true,
+      "source_path": "tools/csv-schema-contract/examples/malformed.csv"
+    },
+    {
+      "path": "examples/pass.csv",
+      "size_bytes": 46,
+      "sha256": "1cdbe53499c0f850c9411250855929b7b63bd37a3778bec3a8aadf8a9a2a1e7b",
+      "git_blob_sha1": "052c24deaf8533e8a325afb15ae883c64f3c515d",
+      "utf8": true,
+      "source_path": "tools/csv-schema-contract/examples/pass.csv"
+    },
+    {
+      "path": "test_tool.py",
+      "size_bytes": 8380,
+      "sha256": "d2a932e47254c8aeb71278585426801a33c9cc6a1dbd6eb8d31ed824106d1bc4",
+      "git_blob_sha1": "1de9916d1f0fd67f8355d15167ed9716eb8f692a",
+      "utf8": true,
+      "source_path": "tools/csv-schema-contract/test_tool.py"
+    },
+    {
+      "path": "tool.py",
+      "size_bytes": 7690,
+      "sha256": "29b332f038aafe7c7743edcc769d601f2a2c13fb37171864e49764d88e15ae11",
+      "git_blob_sha1": "af76b1e98a861d74a55c10c0af1add2d5f0b2f00",
+      "utf8": true,
+      "source_path": "tools/csv-schema-contract/tool.py"
+    },
+    {
+      "path": "verification.json",
+      "size_bytes": 1226,
+      "sha256": "23d0a539f1894db05399c1062abb86bc4d6c4f357186f1b6d13c4f2d6761e5fd",
+      "git_blob_sha1": "8ee51c940abd3ca93c503cf83b75ac80903395aa",
+      "utf8": true,
+      "source_path": "tools/csv-schema-contract/verification.json"
+    },
+    {
+      "path": "LICENSE",
+      "size_bytes": 1076,
+      "sha256": "dce76471613629e93f3f98b7aaa6f72ff9adb88204a3f83d3045952017ab2f46",
+      "git_blob_sha1": "677c4463d59b560db9c1fde1052eff6eefa6441a",
+      "utf8": true,
+      "source_path": "LICENSE"
+    },
+    {
+      "path": ".gitignore",
+      "size_bytes": 62,
+      "sha256": "e4d5aecc4cd36f593c2e7f3dad08b24261b13466b898004a445614058d29d8de",
+      "git_blob_sha1": "fe9f8fb619601213cbfef4f6eadb5d413d8f7f01",
+      "utf8": true,
+      "source_path": ".gitignore"
+    }
+  ],
+  "readme_checks": [
+    {
+      "label": "README example",
+      "args": [
+        "tool.py",
+        "examples/pass.csv",
+        "--contract",
+        "examples/contract.json"
+      ],
+      "expected_exit": 0,
+      "output": "json",
+      "documented_command": "python3 tool.py examples/pass.csv --contract examples/contract.json"
+    },
+    {
+      "label": "README example",
+      "args": [
+        "tool.py",
+        "examples/fail.csv",
+        "--contract",
+        "examples/contract.json"
+      ],
+      "expected_exit": 1,
+      "output": "json",
+      "documented_command": "python3 tool.py examples/fail.csv --contract examples/contract.json"
+    },
+    {
+      "label": "README example",
+      "args": [
+        "tool.py",
+        "examples/malformed.csv",
+        "--contract",
+        "examples/contract.json"
+      ],
+      "expected_exit": 2,
+      "output": "json",
+      "documented_command": "python3 tool.py examples/malformed.csv --contract examples/contract.json"
+    },
+    {
+      "label": "CLI help",
+      "args": [
+        "tool.py",
+        "--help"
+      ],
+      "expected_exit": 0,
+      "output": "help"
+    },
+    {
+      "label": "CLI missing input",
+      "args": [
+        "tool.py"
+      ],
+      "expected_exit": 2,
+      "output": "json"
+    },
+    {
+      "label": "CLI unknown argument",
+      "args": [
+        "tool.py",
+        "--unsupported-migration-test"
+      ],
+      "expected_exit": 2,
+      "output": "json"
+    }
+  ],
+  "current_repository": "mytestapp20261001-collab/mytest-engineering-toolbox",
+  "current_remote_main": "1286096c10a23bbb04aca83679ae3c31f3326030",
+  "migration_status": {
+    "target_tool_repository_count": 50,
+    "new_repositories_accepted": 39,
+    "new_repositories_successful_python_ci_jobs": 78,
+    "reused_csv_repository_pending": 1,
+    "historical_repositories_unchanged_by_migration": 10,
+    "all_50_standalone_release_accepted": false,
+    "observation_task_update": "pending_coordinator_after_all_50_acceptance"
+  },
+  "published_mapping_path": "docs/PUBLISHED_REPOSITORIES_39.json",
+  "full_inventory_path": "docs/REPOSITORY_INVENTORY_50.json",
+  "csv_deployment_receipt_path": "docs/CSV_DEPLOYMENT_ACCEPTANCE.md"
+}
