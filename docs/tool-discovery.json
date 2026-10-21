@@ -1,0 +1,1468 @@
+{
+  "schema_version": 1,
+  "owner": "mytestapp20261001-collab",
+  "owner_id": 337718267,
+  "introduced_on": "2026-10-21",
+  "scope": "Fixed 50 repository IDs only. This is a new discovery surface, not a rewrite of migration/observation baselines or evidence of adoption.",
+  "execution_policy": "Metadata only. The discovery CLI never installs, executes commands, fetches URLs, opens services, or uploads data. Commands are reviewable synthetic smoke examples, not authorization to run them.",
+  "tools": [
+    {
+      "slug": "csv-schema-contract",
+      "repository_id": 1411411288,
+      "repository": "mytestapp20261001-collab/csv-schema-contract",
+      "repository_url": "https://github.com/mytestapp20261001-collab/csv-schema-contract",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "light",
+      "summary": "Check a CSV export against an explicit column, type, missing-value, duplicate-header, and order contract before importing it.",
+      "source_revision": "c6d74e970c4a4b73c7a6624ebcaad641a0fb4940",
+      "readme_url": "https://github.com/mytestapp20261001-collab/csv-schema-contract/blob/c6d74e970c4a4b73c7a6624ebcaad641a0fb4940/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/csv-schema-contract/blob/c6d74e970c4a4b73c7a6624ebcaad641a0fb4940/SKILL.md",
+      "category": "data",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py examples/pass.csv --contract examples/contract.json",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "jsonl-stream-audit",
+      "repository_id": 1412857255,
+      "repository": "mytestapp20261001-collab/jsonl-stream-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/jsonl-stream-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "strong",
+      "summary": "Find bad JSONL records, object-boundary mistakes, blank lines, duplicate members, and oversized lines in a bounded offline export.",
+      "source_revision": "5c48cd21a0beee341c4c1e5ca1d3b5544677e293",
+      "readme_url": "https://github.com/mytestapp20261001-collab/jsonl-stream-audit/blob/5c48cd21a0beee341c4c1e5ca1d3b5544677e293/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/jsonl-stream-audit/blob/5c48cd21a0beee341c4c1e5ca1d3b5544677e293/SKILL.md",
+      "category": "data",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py examples/pass.jsonl",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "json-pointer-preflight",
+      "repository_id": 1412857962,
+      "repository": "mytestapp20261001-collab/json-pointer-preflight",
+      "repository_url": "https://github.com/mytestapp20261001-collab/json-pointer-preflight",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "medium",
+      "summary": "Check whether an explicit list of RFC 6901 plain-string pointers can resolve against a JSON document without reading out or modifying target values.",
+      "source_revision": "5d3a5319e6f9da2922be7ba5a7d598fec7f38656",
+      "readme_url": "https://github.com/mytestapp20261001-collab/json-pointer-preflight/blob/5d3a5319e6f9da2922be7ba5a7d598fec7f38656/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/json-pointer-preflight/blob/5d3a5319e6f9da2922be7ba5a7d598fec7f38656/SKILL.md",
+      "category": "data",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py examples/pass.json --pointers examples/pointers.json",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "toml-overlay-diff",
+      "repository_id": 1412858622,
+      "repository": "mytestapp20261001-collab/toml-overlay-diff",
+      "repository_url": "https://github.com/mytestapp20261001-collab/toml-overlay-diff",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "medium",
+      "summary": "Preview structural differences caused by a deliberately selected shallow or deep TOML overlay, without generating or installing merged configuration.",
+      "source_revision": "532b3995b40e0d84d3f9944b960ed2bd8bd5b6dd",
+      "readme_url": "https://github.com/mytestapp20261001-collab/toml-overlay-diff/blob/532b3995b40e0d84d3f9944b960ed2bd8bd5b6dd/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/toml-overlay-diff/blob/532b3995b40e0d84d3f9944b960ed2bd8bd5b6dd/SKILL.md",
+      "category": "data",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py examples/pass.toml --overlay examples/overlay.toml --mode deep",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "xml-namespace-inventory",
+      "repository_id": 1412859166,
+      "repository": "mytestapp20261001-collab/xml-namespace-inventory",
+      "repository_url": "https://github.com/mytestapp20261001-collab/xml-namespace-inventory",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "medium",
+      "summary": "Inventory namespace declaration scopes and qualified/unqualified element and attribute coverage, while rejecting DTD and custom entity declarations.",
+      "source_revision": "ce6a117efb1d64f262c86e844898decaa1c41da6",
+      "readme_url": "https://github.com/mytestapp20261001-collab/xml-namespace-inventory/blob/ce6a117efb1d64f262c86e844898decaa1c41da6/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/xml-namespace-inventory/blob/ce6a117efb1d64f262c86e844898decaa1c41da6/SKILL.md",
+      "category": "data",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py examples/pass.xml --require-namespaced-attributes",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "ini-section-collision-audit",
+      "repository_id": 1412859584,
+      "repository": "mytestapp20261001-collab/ini-section-collision-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/ini-section-collision-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "light",
+      "summary": "Find duplicate section declarations and duplicate key assignments under explicit case-sensitive or Unicode-casefold matching rules.",
+      "source_revision": "ea33b1458fde0fd1d12ca7582769080950b35bf8",
+      "readme_url": "https://github.com/mytestapp20261001-collab/ini-section-collision-audit/blob/ea33b1458fde0fd1d12ca7582769080950b35bf8/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/ini-section-collision-audit/blob/ea33b1458fde0fd1d12ca7582769080950b35bf8/SKILL.md",
+      "category": "data",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py examples/pass.ini",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "unicode-normalization-audit",
+      "repository_id": 1412859679,
+      "repository": "mytestapp20261001-collab/unicode-normalization-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/unicode-normalization-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "light",
+      "summary": "Detect non-NFC strings, NFC-equivalent collisions, and control/format characters before using strings as identifiers.",
+      "source_revision": "602c09274bd896a63066ea4edd40298ec8614116",
+      "readme_url": "https://github.com/mytestapp20261001-collab/unicode-normalization-audit/blob/602c09274bd896a63066ea4edd40298ec8614116/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/unicode-normalization-audit/blob/602c09274bd896a63066ea4edd40298ec8614116/SKILL.md",
+      "category": "data",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py examples/pass.json",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "decimal-rounding-reconcile",
+      "repository_id": 1412859914,
+      "repository": "mytestapp20261001-collab/decimal-rounding-reconcile",
+      "repository_url": "https://github.com/mytestapp20261001-collab/decimal-rounding-reconcile",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "strong",
+      "summary": "Compare summing individually rounded decimal items with rounding their exact total under an explicit precision and rounding policy.",
+      "source_revision": "1fc853f59cf5e6a152f85a93fd336b835f49e61a",
+      "readme_url": "https://github.com/mytestapp20261001-collab/decimal-rounding-reconcile/blob/1fc853f59cf5e6a152f85a93fd336b835f49e61a/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/decimal-rounding-reconcile/blob/1fc853f59cf5e6a152f85a93fd336b835f49e61a/SKILL.md",
+      "category": "data",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py examples/pass.json --places 2 --rounding half-even",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "timestamp-unit-audit",
+      "repository_id": 1412860207,
+      "repository": "mytestapp20261001-collab/timestamp-unit-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/timestamp-unit-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "maximal",
+      "summary": "Compare epoch values under seconds, milliseconds, and microseconds against an explicit time window while preserving ambiguous interpretations.",
+      "source_revision": "7fdb0eaefce96161a96220cfc35c57b367ea9203",
+      "readme_url": "https://github.com/mytestapp20261001-collab/timestamp-unit-audit/blob/7fdb0eaefce96161a96220cfc35c57b367ea9203/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/timestamp-unit-audit/blob/7fdb0eaefce96161a96220cfc35c57b367ea9203/SKILL.md",
+      "category": "data",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py examples/pass.json --start 2026-01-01T00:00:00Z --end 2026-12-31T23:59:59Z",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "record-key-collision-audit",
+      "repository_id": 1412860465,
+      "repository": "mytestapp20261001-collab/record-key-collision-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/record-key-collision-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "maximal",
+      "summary": "Audit composite record identifiers, explicit null handling, and opt-in normalization without exposing key values or enumerating collision pairs.",
+      "source_revision": "174a2c3e7db7996d290db2bc3d2186be7f2346a0",
+      "readme_url": "https://github.com/mytestapp20261001-collab/record-key-collision-audit/blob/174a2c3e7db7996d290db2bc3d2186be7f2346a0/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/record-key-collision-audit/blob/174a2c3e7db7996d290db2bc3d2186be7f2346a0/SKILL.md",
+      "category": "data",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py examples/pass.json --key tenant --key id",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "tar-member-preflight",
+      "repository_id": 1412860585,
+      "repository": "mytestapp20261001-collab/tar-member-preflight",
+      "repository_url": "https://github.com/mytestapp20261001-collab/tar-member-preflight",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "light",
+      "summary": "Audit TAR extraction hazards and member budgets before choosing an extraction policy.",
+      "source_revision": "99fd1d8776158d7bffb75cf52ff0d87f95f7b58d",
+      "readme_url": "https://github.com/mytestapp20261001-collab/tar-member-preflight/blob/99fd1d8776158d7bffb75cf52ff0d87f95f7b58d/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/tar-member-preflight/blob/99fd1d8776158d7bffb75cf52ff0d87f95f7b58d/SKILL.md",
+      "category": "filesystem",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only. POSIX with O_NOFOLLOW and descriptor-relative opens.",
+      "usage_example": "python3 examples/run_examples.py",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "portable-path-audit",
+      "repository_id": 1412916181,
+      "repository": "mytestapp20261001-collab/portable-path-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/portable-path-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "medium",
+      "summary": "Find filesystem entry names that create Windows and Unicode/case portability risks.",
+      "source_revision": "dd7939abf9c8dd39aca9c715fd8b2e637ad0e944",
+      "readme_url": "https://github.com/mytestapp20261001-collab/portable-path-audit/blob/dd7939abf9c8dd39aca9c715fd8b2e637ad0e944/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/portable-path-audit/blob/dd7939abf9c8dd39aca9c715fd8b2e637ad0e944/SKILL.md",
+      "category": "filesystem",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only. POSIX with O_NOFOLLOW and descriptor-relative opens.",
+      "usage_example": "python3 examples/run_examples.py",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "directory-manifest-diff",
+      "repository_id": 1412916651,
+      "repository": "mytestapp20261001-collab/directory-manifest-diff",
+      "repository_url": "https://github.com/mytestapp20261001-collab/directory-manifest-diff",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "strong",
+      "summary": "Build reproducible SHA-256 tree manifests and compare two local directory trees.",
+      "source_revision": "cc42fd04256d65e879feebf0d1b5d3b2013557f3",
+      "readme_url": "https://github.com/mytestapp20261001-collab/directory-manifest-diff/blob/cc42fd04256d65e879feebf0d1b5d3b2013557f3/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/directory-manifest-diff/blob/cc42fd04256d65e879feebf0d1b5d3b2013557f3/SKILL.md",
+      "category": "filesystem",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only. POSIX with O_NOFOLLOW and descriptor-relative opens.",
+      "usage_example": "python3 examples/run_examples.py",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "symlink-scope-audit",
+      "repository_id": 1412922402,
+      "repository": "mytestapp20261001-collab/symlink-scope-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/symlink-scope-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "medium",
+      "summary": "Locate dangling, cyclic, and out-of-root symlink chains without opening their targets.",
+      "source_revision": "1e973fefe8d7b7f080ea11c04977cfb79dd7eda7",
+      "readme_url": "https://github.com/mytestapp20261001-collab/symlink-scope-audit/blob/1e973fefe8d7b7f080ea11c04977cfb79dd7eda7/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/symlink-scope-audit/blob/1e973fefe8d7b7f080ea11c04977cfb79dd7eda7/SKILL.md",
+      "category": "filesystem",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only. POSIX with O_NOFOLLOW and descriptor-relative opens.",
+      "usage_example": "python3 examples/run_examples.py",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "newline-policy-audit",
+      "repository_id": 1412927913,
+      "repository": "mytestapp20261001-collab/newline-policy-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/newline-policy-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "maximal",
+      "summary": "Check UTF-8 newline style, UTF-8 BOM, and final-newline contracts without changing bytes.",
+      "source_revision": "f37e149f70c42cdf95cbccc1832a73a30007fb24",
+      "readme_url": "https://github.com/mytestapp20261001-collab/newline-policy-audit/blob/f37e149f70c42cdf95cbccc1832a73a30007fb24/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/newline-policy-audit/blob/f37e149f70c42cdf95cbccc1832a73a30007fb24/SKILL.md",
+      "category": "filesystem",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only. POSIX with O_NOFOLLOW and descriptor-relative opens.",
+      "usage_example": "python3 examples/run_examples.py",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "encoding-roundtrip-audit",
+      "repository_id": 1412933432,
+      "repository": "mytestapp20261001-collab/encoding-roundtrip-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/encoding-roundtrip-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "maximal",
+      "summary": "Check lossless strict decode/re-encode using an explicitly selected text encoding.",
+      "source_revision": "f582e6a9eb54d653b3c96013798b05247cf72408",
+      "readme_url": "https://github.com/mytestapp20261001-collab/encoding-roundtrip-audit/blob/f582e6a9eb54d653b3c96013798b05247cf72408/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/encoding-roundtrip-audit/blob/f582e6a9eb54d653b3c96013798b05247cf72408/SKILL.md",
+      "category": "filesystem",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only. POSIX with O_NOFOLLOW and descriptor-relative opens.",
+      "usage_example": "python3 examples/run_examples.py",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "hardlink-size-audit",
+      "repository_id": 1412939310,
+      "repository": "mytestapp20261001-collab/hardlink-size-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/hardlink-size-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "strong",
+      "summary": "Distinguish apparent file bytes, inode-deduplicated bytes, and reported allocation.",
+      "source_revision": "08a8bcd8abf76837154e012ea4c41e93eff9e1d8",
+      "readme_url": "https://github.com/mytestapp20261001-collab/hardlink-size-audit/blob/08a8bcd8abf76837154e012ea4c41e93eff9e1d8/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/hardlink-size-audit/blob/08a8bcd8abf76837154e012ea4c41e93eff9e1d8/SKILL.md",
+      "category": "filesystem",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only. POSIX with O_NOFOLLOW and descriptor-relative opens.",
+      "usage_example": "python3 examples/run_examples.py",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "git-conflict-marker-audit",
+      "repository_id": 1412944972,
+      "repository": "mytestapp20261001-collab/git-conflict-marker-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/git-conflict-marker-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "medium",
+      "summary": "Audit complete and malformed Git-style conflict blocks with a bounded state machine.",
+      "source_revision": "79858f77bfed1ed5ca9c56069146ae45ea0278e3",
+      "readme_url": "https://github.com/mytestapp20261001-collab/git-conflict-marker-audit/blob/79858f77bfed1ed5ca9c56069146ae45ea0278e3/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/git-conflict-marker-audit/blob/79858f77bfed1ed5ca9c56069146ae45ea0278e3/SKILL.md",
+      "category": "filesystem",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only. POSIX with O_NOFOLLOW and descriptor-relative opens.",
+      "usage_example": "python3 examples/run_examples.py",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "shebang-portability-audit",
+      "repository_id": 1412950597,
+      "repository": "mytestapp20261001-collab/shebang-portability-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/shebang-portability-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "light",
+      "summary": "Inspect a script first line under an explicit Unix interpreter and env policy.",
+      "source_revision": "5309d3e77f76d5955e8d2aa119d861070511363c",
+      "readme_url": "https://github.com/mytestapp20261001-collab/shebang-portability-audit/blob/5309d3e77f76d5955e8d2aa119d861070511363c/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/shebang-portability-audit/blob/5309d3e77f76d5955e8d2aa119d861070511363c/SKILL.md",
+      "category": "filesystem",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only. POSIX with O_NOFOLLOW and descriptor-relative opens.",
+      "usage_example": "python3 examples/run_examples.py",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "source-map-reference-audit",
+      "repository_id": 1412956089,
+      "repository": "mytestapp20261001-collab/source-map-reference-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/source-map-reference-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "strong",
+      "summary": "Check v3 flat source-map source coverage and local references within an explicit root.",
+      "source_revision": "2e69b5297c242cb58ca94fec1ebbdd0fa3b47ed8",
+      "readme_url": "https://github.com/mytestapp20261001-collab/source-map-reference-audit/blob/2e69b5297c242cb58ca94fec1ebbdd0fa3b47ed8/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/source-map-reference-audit/blob/2e69b5297c242cb58ca94fec1ebbdd0fa3b47ed8/SKILL.md",
+      "category": "filesystem",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only. POSIX with O_NOFOLLOW and descriptor-relative opens.",
+      "usage_example": "python3 examples/run_examples.py",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "http-cache-age-lab",
+      "repository_id": 1412961597,
+      "repository": "mytestapp20261001-collab/http-cache-age-lab",
+      "repository_url": "https://github.com/mytestapp20261001-collab/http-cache-age-lab",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "medium",
+      "summary": "A small reproducible age calculation for debugging why an explicitly max-age response becomes stale sooner than expected. Python 3.12+, standard library only. It does not contact an origin, operate a cache, or decide whether reuse is allowed.",
+      "source_revision": "9ef7af6a232a9c100bbb2251a8e9c2b63192aa31",
+      "readme_url": "https://github.com/mytestapp20261001-collab/http-cache-age-lab/blob/9ef7af6a232a9c100bbb2251a8e9c2b63192aa31/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/http-cache-age-lab/blob/9ef7af6a232a9c100bbb2251a8e9c2b63192aa31/SKILL.md",
+      "category": "protocol",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py --input examples/good.json --pretty",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "retry-budget-lab",
+      "repository_id": 1413037610,
+      "repository": "mytestapp20261001-collab/retry-budget-lab",
+      "repository_url": "https://github.com/mytestapp20261001-collab/retry-budget-lab",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "strong",
+      "summary": "Check whether one more hypothetical attempt fits explicit retry and deadline budgets. This helps regression-test a client's scheduling arithmetic without sleeping, randomness, a running server, or issuing a request. Python 3.12+ only.",
+      "source_revision": "03abba9a53a3b70778a3a7aa021bd0c62aa4b537",
+      "readme_url": "https://github.com/mytestapp20261001-collab/retry-budget-lab/blob/03abba9a53a3b70778a3a7aa021bd0c62aa4b537/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/retry-budget-lab/blob/03abba9a53a3b70778a3a7aa021bd0c62aa4b537/SKILL.md",
+      "category": "protocol",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py --input examples/good.json --pretty",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "cors-response-audit",
+      "repository_id": 1413178590,
+      "repository": "mytestapp20261001-collab/cors-response-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/cors-response-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "maximal",
+      "summary": "Check supplied response fields against an explicit request origin and credential mode. Preserve duplicate header lines rather than accidentally flattening them into a dict. Useful as offline configuration regression fixtures. Python 3.12+. It sends no requests and does not emulate an entire browser.",
+      "source_revision": "d11d37411bbb8359fde4c41b434438e8e7b0588c",
+      "readme_url": "https://github.com/mytestapp20261001-collab/cors-response-audit/blob/d11d37411bbb8359fde4c41b434438e8e7b0588c/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/cors-response-audit/blob/d11d37411bbb8359fde4c41b434438e8e7b0588c/SKILL.md",
+      "category": "protocol",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py --input examples/good.json --pretty",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "cookie-scope-audit",
+      "repository_id": 1413184828,
+      "repository": "mytestapp20261001-collab/cookie-scope-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/cookie-scope-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "strong",
+      "summary": "Explain a cookie's supplied host/path/transport/SameSite conditions without printing its value or consulting a browser cookie store. Use it to make failing scope cases reproducible with synthetic Set-Cookie fixtures. Python 3.12+.",
+      "source_revision": "3f46b0b97ace141d8a5af828e65dbe1ee5ff8050",
+      "readme_url": "https://github.com/mytestapp20261001-collab/cookie-scope-audit/blob/3f46b0b97ace141d8a5af828e65dbe1ee5ff8050/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/cookie-scope-audit/blob/3f46b0b97ace141d8a5af828e65dbe1ee5ff8050/SKILL.md",
+      "category": "protocol",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py --input examples/good.json --pretty",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "url-authority-audit",
+      "repository_id": 1413191425,
+      "repository": "mytestapp20261001-collab/url-authority-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/url-authority-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "strong",
+      "summary": "An offline Python 3.12+ standard-library review of HTTP(S) URL authorities and common parser ambiguities. It extracts validated ASCII host/port information and flags credentials, unusual host spelling, port issues, and potentially divergent parsing. It never resolves DNS, fetches a URL, or changes state.",
+      "source_revision": "91e58f2dce52e890ec82741f1bc2e0d6e8691bf0",
+      "readme_url": "https://github.com/mytestapp20261001-collab/url-authority-audit/blob/91e58f2dce52e890ec82741f1bc2e0d6e8691bf0/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/url-authority-audit/blob/91e58f2dce52e890ec82741f1bc2e0d6e8691bf0/SKILL.md",
+      "category": "protocol",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py --input examples/good.json",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "http-link-header-kit",
+      "repository_id": 1413198715,
+      "repository": "mytestapp20261001-collab/http-link-header-kit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/http-link-header-kit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "light",
+      "summary": "Turn synthetic pagination/discovery Link field-values into a bounded structural report. It keeps commas inside quoted strings and URI angle brackets intact, tracks duplicates, and resolves relative HTTP(S) references offline. Python 3.12+. No targets, relation URIs or anchors are fetched.",
+      "source_revision": "7fbb8e133193df67cb033aa269b381a9180ee9fe",
+      "readme_url": "https://github.com/mytestapp20261001-collab/http-link-header-kit/blob/7fbb8e133193df67cb033aa269b381a9180ee9fe/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/http-link-header-kit/blob/7fbb8e133193df67cb033aa269b381a9180ee9fe/SKILL.md",
+      "category": "protocol",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py --input examples/good.json --pretty",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "content-disposition-filename-kit",
+      "repository_id": 1413206222,
+      "repository": "mytestapp20261001-collab/content-disposition-filename-kit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/content-disposition-filename-kit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "light",
+      "summary": "Audit download filename metadata before a consumer chooses a local save policy. Resolve filename/filename* preference, reject ambiguous encoding, and report common path/platform hazards using synthetic headers. Python 3.12+, no packages. It does not save, rename, sanitize or open a file.",
+      "source_revision": "1ced8dcad94366ac3528a2617d6a4d35ae22b623",
+      "readme_url": "https://github.com/mytestapp20261001-collab/content-disposition-filename-kit/blob/1ced8dcad94366ac3528a2617d6a4d35ae22b623/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/content-disposition-filename-kit/blob/1ced8dcad94366ac3528a2617d6a4d35ae22b623/SKILL.md",
+      "category": "protocol",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py --input examples/good.json --pretty",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "redirect-chain-audit",
+      "repository_id": 1413213593,
+      "repository": "mytestapp20261001-collab/redirect-chain-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/redirect-chain-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "maximal",
+      "summary": "A standalone Python 3.12+ standard-library audit of a supplied, offline HTTP response trace. It models relative `Location` resolution, repeated request targets, cross-origin transitions, HTTPS downgrades, and a redirect budget. It makes no requests and does not discover redirects.",
+      "source_revision": "62de3730db3b06db1420484075ae48e5f73eb9a4",
+      "readme_url": "https://github.com/mytestapp20261001-collab/redirect-chain-audit/blob/62de3730db3b06db1420484075ae48e5f73eb9a4/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/redirect-chain-audit/blob/62de3730db3b06db1420484075ae48e5f73eb9a4/SKILL.md",
+      "category": "protocol",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py --input examples/good.json",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "ip-network-overlap-audit",
+      "repository_id": 1413221977,
+      "repository": "mytestapp20261001-collab/ip-network-overlap-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/ip-network-overlap-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "maximal",
+      "summary": "A standalone, offline Python 3.12+ standard-library audit for supplied IPv4 and IPv6 CIDRs. It reports duplicate networks, containment conflicts, host-bit normalization, malformed CIDRs, and endpoint address classifications. Nothing is fetched or changed.",
+      "source_revision": "778deea33897a37730ef88d1c80d64b2e1f3ce9e",
+      "readme_url": "https://github.com/mytestapp20261001-collab/ip-network-overlap-audit/blob/778deea33897a37730ef88d1c80d64b2e1f3ce9e/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/ip-network-overlap-audit/blob/778deea33897a37730ef88d1c80d64b2e1f3ce9e/SKILL.md",
+      "category": "protocol",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py --input examples/good.json",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "multipart-boundary-fixtures",
+      "repository_id": 1413230094,
+      "repository": "mytestapp20261001-collab/multipart-boundary-fixtures",
+      "repository_url": "https://github.com/mytestapp20261001-collab/multipart-boundary-fixtures",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "medium",
+      "summary": "Reproduce a multipart boundary collision or missing closing delimiter locally. Useful for testing the framing generated by upload code without uploading any data. Python 3.12+, standard library only. Payload bytes never appear in CLI output.",
+      "source_revision": "9d16beed534b0a090024603a4c8cee817b3d8443",
+      "readme_url": "https://github.com/mytestapp20261001-collab/multipart-boundary-fixtures/blob/9d16beed534b0a090024603a4c8cee817b3d8443/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/multipart-boundary-fixtures/blob/9d16beed534b0a090024603a4c8cee817b3d8443/SKILL.md",
+      "category": "protocol",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3 tool.py --input examples/good.json --pretty",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "junit-result-contract",
+      "repository_id": 1413238081,
+      "repository": "mytestapp20261001-collab/junit-result-contract",
+      "repository_url": "https://github.com/mytestapp20261001-collab/junit-result-contract",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "medium",
+      "summary": "Check JUnit-style suite counts, duplicate test identities, conflicting outcomes, and reported failures without running tests.",
+      "source_revision": "b8ca51ee1a65b30ecc83be876084003d79b7a3eb",
+      "readme_url": "https://github.com/mytestapp20261001-collab/junit-result-contract/blob/b8ca51ee1a65b30ecc83be876084003d79b7a3eb/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/junit-result-contract/blob/b8ca51ee1a65b30ecc83be876084003d79b7a3eb/SKILL.md",
+      "category": "quality",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3.12 -I tool.py examples/pass.xml",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "sarif-baseline-diff",
+      "repository_id": 1413246884,
+      "repository": "mytestapp20261001-collab/sarif-baseline-diff",
+      "repository_url": "https://github.com/mytestapp20261001-collab/sarif-baseline-diff",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "light",
+      "summary": "Compare a documented SARIF 2.1.0 subset using fingerprint-first identities and privacy-preserving change reports.",
+      "source_revision": "805f5bb1605eb792fc4e3f47ad3866dcf28b2882",
+      "readme_url": "https://github.com/mytestapp20261001-collab/sarif-baseline-diff/blob/805f5bb1605eb792fc4e3f47ad3866dcf28b2882/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/sarif-baseline-diff/blob/805f5bb1605eb792fc4e3f47ad3866dcf28b2882/SKILL.md",
+      "category": "quality",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3.12 -I tool.py examples/baseline.json examples/pass.json",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "coverage-threshold-contract",
+      "repository_id": 1413255626,
+      "repository": "mytestapp20261001-collab/coverage-threshold-contract",
+      "repository_url": "https://github.com/mytestapp20261001-collab/coverage-threshold-contract",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "strong",
+      "summary": "Check every reported file against explicit line/branch thresholds without treating missing or empty coverage as success.",
+      "source_revision": "53d46065c19baa1a9463cd54bfef653f103dad1c",
+      "readme_url": "https://github.com/mytestapp20261001-collab/coverage-threshold-contract/blob/53d46065c19baa1a9463cd54bfef653f103dad1c/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/coverage-threshold-contract/blob/53d46065c19baa1a9463cd54bfef653f103dad1c/SKILL.md",
+      "category": "quality",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3.12 -I tool.py examples/pass.json",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "unified-diff-preflight",
+      "repository_id": 1413263710,
+      "repository": "mytestapp20261001-collab/unified-diff-preflight",
+      "repository_url": "https://github.com/mytestapp20261001-collab/unified-diff-preflight",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "light",
+      "summary": "Preflight conventional unified diffs offline for hunk counts, ranges, overlap, unsafe paths, and unsupported binary patches.",
+      "source_revision": "b605049604dd17509aabc91339d7a2704bb04670",
+      "readme_url": "https://github.com/mytestapp20261001-collab/unified-diff-preflight/blob/b605049604dd17509aabc91339d7a2704bb04670/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/unified-diff-preflight/blob/b605049604dd17509aabc91339d7a2704bb04670/SKILL.md",
+      "category": "quality",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3.12 -I tool.py examples/pass.diff",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "dependency-cycle-audit",
+      "repository_id": 1413271508,
+      "repository": "mytestapp20261001-collab/dependency-cycle-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/dependency-cycle-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "maximal",
+      "summary": "Locate strongly connected dependency components, self-loops, missing endpoints, and duplicate edges in an explicit directed graph.",
+      "source_revision": "c23d22394d5a5c78e33ac999990ac76da4a62eee",
+      "readme_url": "https://github.com/mytestapp20261001-collab/dependency-cycle-audit/blob/c23d22394d5a5c78e33ac999990ac76da4a62eee/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/dependency-cycle-audit/blob/c23d22394d5a5c78e33ac999990ac76da4a62eee/SKILL.md",
+      "category": "quality",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3.12 -I tool.py examples/pass.json",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "artifact-name-matrix-audit",
+      "repository_id": 1413280108,
+      "repository": "mytestapp20261001-collab/artifact-name-matrix-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/artifact-name-matrix-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "light",
+      "summary": "Expand a bounded explicit CI matrix and check artifact-name collisions before a build starts.",
+      "source_revision": "37664305c64b03e4c7f341fd6f556ac134da3634",
+      "readme_url": "https://github.com/mytestapp20261001-collab/artifact-name-matrix-audit/blob/37664305c64b03e4c7f341fd6f556ac134da3634/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/artifact-name-matrix-audit/blob/37664305c64b03e4c7f341fd6f556ac134da3634/SKILL.md",
+      "category": "quality",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3.12 -I tool.py examples/pass.json",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "sqlite-foreign-key-audit",
+      "repository_id": 1413288209,
+      "repository": "mytestapp20261001-collab/sqlite-foreign-key-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/sqlite-foreign-key-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "strong",
+      "summary": "Run bounded SQLite integrity and foreign-key checks on an explicitly selected offline standalone database without modifying it.",
+      "source_revision": "c0c91e6135f0ec706947751f4a56d06224d5a203",
+      "readme_url": "https://github.com/mytestapp20261001-collab/sqlite-foreign-key-audit/blob/c0c91e6135f0ec706947751f4a56d06224d5a203/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/sqlite-foreign-key-audit/blob/c0c91e6135f0ec706947751f4a56d06224d5a203/SKILL.md",
+      "category": "quality",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only. Linux with /proc/self/fd; select a cleanly closed offline database with no sidecars.",
+      "usage_example": "python3.12 -I tool.py /absolute/path/to/selected-offline.sqlite  # replace only with an explicitly authorized cleanly closed database",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "python-import-shadow-audit",
+      "repository_id": 1413296368,
+      "repository": "mytestapp20261001-collab/python-import-shadow-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/python-import-shadow-audit",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "maximal",
+      "summary": "Find immediate file/package names that collide with the running Python interpreter standard library, without reading or importing target code.",
+      "source_revision": "de6801858ff3400004fd8db423443a2c4143f357",
+      "readme_url": "https://github.com/mytestapp20261001-collab/python-import-shadow-audit/blob/de6801858ff3400004fd8db423443a2c4143f357/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/python-import-shadow-audit/blob/de6801858ff3400004fd8db423443a2c4143f357/SKILL.md",
+      "category": "quality",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only; POSIX with O_NOFOLLOW and descriptor-relative opens (dir_fd).",
+      "usage_example": "python3.12 -I tool.py examples/pass",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "translation-placeholder-contract",
+      "repository_id": 1413304214,
+      "repository": "mytestapp20261001-collab/translation-placeholder-contract",
+      "repository_url": "https://github.com/mytestapp20261001-collab/translation-placeholder-contract",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "maximal",
+      "summary": "Check flat translation JSON key coverage and Python format-style placeholder contracts without formatting or executing templates.",
+      "source_revision": "7d26d4b81bcc9862eb804e8f2a043ba5409234d7",
+      "readme_url": "https://github.com/mytestapp20261001-collab/translation-placeholder-contract/blob/7d26d4b81bcc9862eb804e8f2a043ba5409234d7/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/translation-placeholder-contract/blob/7d26d4b81bcc9862eb804e8f2a043ba5409234d7/SKILL.md",
+      "category": "quality",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only.",
+      "usage_example": "python3.12 -I tool.py examples/pass.json",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "release-asset-contract",
+      "repository_id": 1413312760,
+      "repository": "mytestapp20261001-collab/release-asset-contract",
+      "repository_url": "https://github.com/mytestapp20261001-collab/release-asset-contract",
+      "cohort": "new_40_preassigned",
+      "guidance_group": "medium",
+      "summary": "Validate local release files against an explicit manifest of relative paths, byte sizes, and SHA-256 hashes; never download or execute assets.",
+      "source_revision": "9d49975cfaf7c4c9bcec804a28da49cd8ee5fe71",
+      "readme_url": "https://github.com/mytestapp20261001-collab/release-asset-contract/blob/9d49975cfaf7c4c9bcec804a28da49cd8ee5fe71/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/release-asset-contract/blob/9d49975cfaf7c4c9bcec804a28da49cd8ee5fe71/SKILL.md",
+      "category": "quality",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12; standard library only. POSIX with O_NOFOLLOW and descriptor-relative opens.",
+      "usage_example": "python3.12 -I tool.py examples/pass.json examples/assets",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "scripts/run_readme_checks.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Runs the documented synthetic pass/fail/error commands and checks their expected exit codes. May create temporary synthetic fixtures; never scans user files.",
+        "local_validation": "passed Python 3.12.14"
+      },
+      "boundary": "Offline audit of explicitly authorized local inputs only; no remediation or upload. Read pinned README for exact limits and output disclosure."
+    },
+    {
+      "slug": "har-redaction-fixtures",
+      "repository_id": 1404586152,
+      "repository": "mytestapp20261001-collab/har-redaction-fixtures",
+      "repository_url": "https://github.com/mytestapp20261001-collab/har-redaction-fixtures",
+      "cohort": "historical_10",
+      "guidance_group": null,
+      "summary": "A small, offline regression corpus for checking whether a HAR sanitizer removes known synthetic secrets without gutting the surrounding fixture. Twelve original input/reference pairs, a zero-dependency Node checker, and regression tests.",
+      "source_revision": "b327ae82fada8495a33ebc987cde1916eec1561d",
+      "readme_url": "https://github.com/mytestapp20261001-collab/har-redaction-fixtures/blob/b327ae82fada8495a33ebc987cde1916eec1561d/README.md",
+      "skill_url": null,
+      "category": "protocol",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Node >=22; no package install; local synthetic fixtures",
+      "usage_example": "node bin/check.mjs fixtures/reference",
+      "smoke": {
+        "argv": [
+          "node",
+          "bin/check.mjs",
+          "fixtures/reference"
+        ],
+        "expected_exit": 0,
+        "scope": "Synthetic example or unit smoke only; see README for generated temporary outputs and trusted adapter execution. No user data supplied.",
+        "local_validation": "passed"
+      },
+      "boundary": "Read pinned README: some synthetic labs execute their own trusted fixture/adapters or use loopback TCP and temporary outputs. Do not run an untrusted adapter or replace inputs without authorization."
+    },
+    {
+      "slug": "playwright-run-audit",
+      "repository_id": 1405049386,
+      "repository": "mytestapp20261001-collab/playwright-run-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/playwright-run-audit",
+      "cohort": "historical_10",
+      "guidance_group": null,
+      "summary": "A small offline evidence auditor for explicitly planned Playwright shards. It answers: “Did every expected shard finish, and did every test it discovered produce a terminal result or explicit skip?” It keeps completeness separate from test outcomes.",
+      "source_revision": "9b9f4032cfd2dc1414ec67f63e941a21e6e06807",
+      "readme_url": "https://github.com/mytestapp20261001-collab/playwright-run-audit/blob/9b9f4032cfd2dc1414ec67f63e941a21e6e06807/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/playwright-run-audit/blob/9b9f4032cfd2dc1414ec67f63e941a21e6e06807/SKILL.md",
+      "category": "quality",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Node 22/24; zero dependencies for unit smoke/auditor. Real runner integration requires pinned @playwright/test and POSIX; no browser download.",
+      "usage_example": "node --test test/*.test.mjs",
+      "smoke": {
+        "argv": [
+          "node",
+          "--test",
+          "test/audit.test.mjs",
+          "test/reporter.test.mjs"
+        ],
+        "expected_exit": 0,
+        "scope": "Synthetic example or unit smoke only; see README for generated temporary outputs and trusted adapter execution. No user data supplied.",
+        "local_validation": "unit smoke passed; real Playwright integration not run: package unavailable"
+      },
+      "boundary": "Read pinned README: some synthetic labs execute their own trusted fixture/adapters or use loopback TCP and temporary outputs. Do not run an untrusted adapter or replace inputs without authorization."
+    },
+    {
+      "slug": "env-loader-audit",
+      "repository_id": 1405359938,
+      "repository": "mytestapp20261001-collab/env-loader-audit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/env-loader-audit",
+      "cohort": "historical_10",
+      "guidance_group": null,
+      "summary": "Compare dotenv and native Node env-file parsing, file precedence, external masking, and a reversed-order candidate without printing values.",
+      "source_revision": "0aeade00933da83c66f1fa65c6f907bfe44359a5",
+      "readme_url": "https://github.com/mytestapp20261001-collab/env-loader-audit/blob/0aeade00933da83c66f1fa65c6f907bfe44359a5/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/env-loader-audit/blob/0aeade00933da83c66f1fa65c6f907bfe44359a5/SKILL.md",
+      "category": "quality",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "POSIX; Node >=22; pinned dotenv 18.0.5 installed separately (npm ci --ignore-scripts --no-audit --no-fund).",
+      "usage_example": "node bin/env-loader-audit.js --reverse-candidate -- examples/local.env examples/base.env",
+      "smoke": {
+        "argv": [
+          "node",
+          "bin/env-loader-audit.js",
+          "--reverse-candidate",
+          "--",
+          "examples/local.env",
+          "examples/base.env"
+        ],
+        "expected_exit": 1,
+        "scope": "Synthetic example or unit smoke only; see README for generated temporary outputs and trusted adapter execution. No user data supplied.",
+        "local_validation": "not run: dotenv unavailable; syntax passed"
+      },
+      "boundary": "Read pinned README: some synthetic labs execute their own trusted fixture/adapters or use loopback TCP and temporary outputs. Do not run an untrusted adapter or replace inputs without authorization."
+    },
+    {
+      "slug": "resume-download-integrity-kit",
+      "repository_id": 1405851307,
+      "repository": "mytestapp20261001-collab/resume-download-integrity-kit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/resume-download-integrity-kit",
+      "cohort": "historical_10",
+      "guidance_group": null,
+      "summary": "A small acceptance kit for the moment you add HTTP Range resume to a downloader. It catches a common corruption bug: a server returns a complete `200` response, but the client appends it to an old partial file as though it were `206`.",
+      "source_revision": "201f0a2d380c0ba635138f650acf547a7d0251bf",
+      "readme_url": "https://github.com/mytestapp20261001-collab/resume-download-integrity-kit/blob/201f0a2d380c0ba635138f650acf547a7d0251bf/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/resume-download-integrity-kit/blob/201f0a2d380c0ba635138f650acf547a7d0251bf/SKILL.md",
+      "category": "protocol",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Linux; Node >=22; loopback TCP permission; no packages",
+      "usage_example": "node bin/run.mjs",
+      "smoke": {
+        "argv": [
+          "node",
+          "bin/run.mjs"
+        ],
+        "expected_exit": 0,
+        "scope": "Synthetic example or unit smoke only; see README for generated temporary outputs and trusted adapter execution. No user data supplied.",
+        "local_validation": "passed"
+      },
+      "boundary": "Read pinned README: some synthetic labs execute their own trusted fixture/adapters or use loopback TCP and temporary outputs. Do not run an untrusted adapter or replace inputs without authorization."
+    },
+    {
+      "slug": "sqlite-wal-restore-lab",
+      "repository_id": 1405919373,
+      "repository": "mytestapp20261001-collab/sqlite-wal-restore-lab",
+      "repository_url": "https://github.com/mytestapp20261001-collab/sqlite-wal-restore-lab",
+      "cohort": "historical_10",
+      "guidance_group": null,
+      "summary": "A copied SQLite database can open normally and return `integrity_check = ok` while missing a committed transaction. Reproduce that false confidence, repair it with SQLite's backup API, and keep the content checks as a regression test.",
+      "source_revision": "192ae25894933ae297c92706232c02614f6b3a84",
+      "readme_url": "https://github.com/mytestapp20261001-collab/sqlite-wal-restore-lab/blob/192ae25894933ae297c92706232c02614f6b3a84/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/sqlite-wal-restore-lab/blob/192ae25894933ae297c92706232c02614f6b3a84/SKILL.md",
+      "category": "data",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python >=3.12 with sqlite3; writable local temp directory; Linux tested",
+      "usage_example": "python3 -B lab.py --json",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "lab.py",
+          "--json"
+        ],
+        "expected_exit": 0,
+        "scope": "Synthetic example or unit smoke only; see README for generated temporary outputs and trusted adapter execution. No user data supplied.",
+        "local_validation": "passed"
+      },
+      "boundary": "Read pinned README: some synthetic labs execute their own trusted fixture/adapters or use loopback TCP and temporary outputs. Do not run an untrusted adapter or replace inputs without authorization."
+    },
+    {
+      "slug": "lsp-position-edit-kit",
+      "repository_id": 1406077078,
+      "repository": "mytestapp20261001-collab/lsp-position-edit-kit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/lsp-position-edit-kit",
+      "cohort": "historical_10",
+      "guidance_group": null,
+      "summary": "Catch edits that work on ASCII and shift after emoji, CJK or an earlier change. This small Python standard-library kit checks an application boundary: UTF-8 byte spans → negotiated LSP ranges → exact edited document. It also separates sequential `didChange` updates from simultaneous `TextEdit` batches.",
+      "source_revision": "af6354d16a6295b0f2095a70494461490ba2873c",
+      "readme_url": "https://github.com/mytestapp20261001-collab/lsp-position-edit-kit/blob/af6354d16a6295b0f2095a70494461490ba2873c/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/lsp-position-edit-kit/blob/af6354d16a6295b0f2095a70494461490ba2873c/SKILL.md",
+      "category": "quality",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python 3.12/3.13 stdlib; Linux tested",
+      "usage_example": "python -B kit.py",
+      "smoke": {
+        "argv": [
+          "python",
+          "-B",
+          "kit.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Synthetic example or unit smoke only; see README for generated temporary outputs and trusted adapter execution. No user data supplied.",
+        "local_validation": "passed"
+      },
+      "boundary": "Read pinned README: some synthetic labs execute their own trusted fixture/adapters or use loopback TCP and temporary outputs. Do not run an untrusted adapter or replace inputs without authorization."
+    },
+    {
+      "slug": "zip-member-preflight",
+      "repository_id": 1406225114,
+      "repository": "mytestapp20261001-collab/zip-member-preflight",
+      "repository_url": "https://github.com/mytestapp20261001-collab/zip-member-preflight",
+      "cohort": "historical_10",
+      "guidance_group": null,
+      "summary": "Find conflicting member names before handing off a ZIP export. This small Python standard-library CLI reports original names, zero-based member indices and stable rule IDs. It reads the explicitly supplied local archive and never extracts, renames, repairs or uploads it.",
+      "source_revision": "a253f5b7d9c12a8fc3e5ec99eb80101f04513d13",
+      "readme_url": "https://github.com/mytestapp20261001-collab/zip-member-preflight/blob/a253f5b7d9c12a8fc3e5ec99eb80101f04513d13/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/zip-member-preflight/blob/a253f5b7d9c12a8fc3e5ec99eb80101f04513d13/SKILL.md",
+      "category": "filesystem",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Python 3.12/3.13 stdlib; Linux tested; writable local temp directory",
+      "usage_example": "python -B demo.py",
+      "smoke": {
+        "argv": [
+          "python",
+          "-B",
+          "demo.py"
+        ],
+        "expected_exit": 0,
+        "scope": "Synthetic example or unit smoke only; see README for generated temporary outputs and trusted adapter execution. No user data supplied.",
+        "local_validation": "passed"
+      },
+      "boundary": "Read pinned README: some synthetic labs execute their own trusted fixture/adapters or use loopback TCP and temporary outputs. Do not run an untrusted adapter or replace inputs without authorization."
+    },
+    {
+      "slug": "make-rebuild-contract-kit",
+      "repository_id": 1406293364,
+      "repository": "mytestapp20261001-collab/make-rebuild-contract-kit",
+      "repository_url": "https://github.com/mytestapp20261001-collab/make-rebuild-contract-kit",
+      "cohort": "historical_10",
+      "guidance_group": null,
+      "summary": "A successful build can still leave a stale executable. This small, runnable repair lab demonstrates that mistake in one generated-header C program, then checks the fix does not rebuild needlessly.",
+      "source_revision": "56e6aadbcd7d9c78225b23a5466d6c3156b71e74",
+      "readme_url": "https://github.com/mytestapp20261001-collab/make-rebuild-contract-kit/blob/56e6aadbcd7d9c78225b23a5466d6c3156b71e74/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/make-rebuild-contract-kit/blob/56e6aadbcd7d9c78225b23a5466d6c3156b71e74/SKILL.md",
+      "category": "quality",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Linux; Python >=3.12 with simple ASCII executable path; GNU Make 4.x and GCC in /usr/bin or /bin; writable temp",
+      "usage_example": "python3 -B lab.py --demo",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "lab.py",
+          "--demo"
+        ],
+        "expected_exit": 0,
+        "scope": "Synthetic example or unit smoke only; see README for generated temporary outputs and trusted adapter execution. No user data supplied.",
+        "local_validation": "passed"
+      },
+      "boundary": "Read pinned README: some synthetic labs execute their own trusted fixture/adapters or use loopback TCP and temporary outputs. Do not run an untrusted adapter or replace inputs without authorization."
+    },
+    {
+      "slug": "cmake-relocation-lab",
+      "repository_id": 1406449625,
+      "repository": "mytestapp20261001-collab/cmake-relocation-lab",
+      "repository_url": "https://github.com/mytestapp20261001-collab/cmake-relocation-lab",
+      "cohort": "historical_10",
+      "guidance_group": null,
+      "summary": "An installed library can work until its installation directory moves. This executable repair example catches that error by moving a real static C library, removing its original source/build/install locations, and compiling and running a separate consumer.",
+      "source_revision": "83bb1307f55389eab5bc6c21eea07a601741e694",
+      "readme_url": "https://github.com/mytestapp20261001-collab/cmake-relocation-lab/blob/83bb1307f55389eab5bc6c21eea07a601741e694/README.md",
+      "skill_url": "https://github.com/mytestapp20261001-collab/cmake-relocation-lab/blob/83bb1307f55389eab5bc6c21eea07a601741e694/SKILL.md",
+      "category": "quality",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Linux; Python >=3.12; CMake 3.31–4.x; GCC and GNU Make in /usr/bin or /bin. CI covers CMake 3.31.10 and 4.4.4.",
+      "usage_example": "python3 -B lab.py --demo",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "lab.py",
+          "--demo"
+        ],
+        "expected_exit": 0,
+        "scope": "Synthetic example or unit smoke only; see README for generated temporary outputs and trusted adapter execution. No user data supplied.",
+        "local_validation": "not completed: CMake absent; correctly returned exit 2; 16 environment-independent contract tests passed"
+      },
+      "boundary": "Read pinned README: some synthetic labs execute their own trusted fixture/adapters or use loopback TCP and temporary outputs. Do not run an untrusted adapter or replace inputs without authorization."
+    },
+    {
+      "slug": "protobuf-relay-preservation-lab",
+      "repository_id": 1406554255,
+      "repository": "mytestapp20261001-collab/protobuf-relay-preservation-lab",
+      "repository_url": "https://github.com/mytestapp20261001-collab/protobuf-relay-preservation-lab",
+      "cohort": "historical_10",
+      "guidance_group": null,
+      "summary": "Test whether an older Protobuf relay preserves newer semantic fields while performing the required hops edit; includes lossy negative controls.",
+      "source_revision": "1ab2026770f3ba387b2ca02aa44adb90593a52b0",
+      "readme_url": "https://github.com/mytestapp20261001-collab/protobuf-relay-preservation-lab/blob/1ab2026770f3ba387b2ca02aa44adb90593a52b0/README.md",
+      "skill_url": null,
+      "category": "data",
+      "working_directory": "repository root",
+      "license": "MIT",
+      "external_network_at_runtime": false,
+      "requirements": "Linux x86_64; Python 3.12.14; protobuf 7.36.2 installed separately from requirements.txt. Regeneration additionally requires requirements-dev.txt.",
+      "usage_example": "python3 -B lab.py --mode preserve",
+      "smoke": {
+        "argv": [
+          "python3",
+          "-B",
+          "lab.py",
+          "--mode",
+          "preserve"
+        ],
+        "expected_exit": 0,
+        "scope": "Synthetic example or unit smoke only; see README for generated temporary outputs and trusted adapter execution. No user data supplied.",
+        "local_validation": "not completed: protobuf unavailable; lab/relay setup errors correctly returned exit 2"
+      },
+      "boundary": "Read pinned README: some synthetic labs execute their own trusted fixture/adapters or use loopback TCP and temporary outputs. Do not run an untrusted adapter or replace inputs without authorization."
+    }
+  ]
+}

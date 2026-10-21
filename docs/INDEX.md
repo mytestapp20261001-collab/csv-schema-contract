@@ -1,5 +1,9 @@
 # Standalone migration inventory: 50 independent tool repositories
 
+For current task-based discovery, see [Find a tool](../DISCOVER.md),
+[50-tool machine metadata](tool-discovery.json), and the [2026-10-21 maintenance audit](AUDIT_2026-10-21.md).
+These are new surfaces; the migration acceptance record below remains historical.
+
 The 40 preassigned split tools are accepted at fixed published commits with 80
 successful Python CI jobs. Ten historical tool repositories remain unchanged;
 they were not rerun in this migration. All 50 identities and HEADs were rechecked
