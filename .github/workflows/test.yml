@@ -30,5 +30,9 @@ jobs:
         run: python -B scripts/validate_release.py
       - name: Run README synthetic examples and CLI checks
         run: python -B scripts/run_readme_checks.py
+      - name: Validate fixed 50-tool discovery surface
+        run: |
+          python -B scripts/discover_tools.py --validate
+          python -B -m unittest discover -s scripts -p test_discovery.py -v
       - name: Confirm tests did not modify tracked files
         run: git diff --exit-code
