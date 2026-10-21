@@ -1229,5 +1229,6 @@
       "protobuf-relay-preservation-lab"
     ],
     "playwright_scope": "dependency-free unit smoke, not real runner integration"
-  }
+  },
+  "delivery_receipt": "AUDIT_2026-10-21_DELIVERY.json"
 }
