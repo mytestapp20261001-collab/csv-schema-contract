@@ -48,6 +48,30 @@ class DiscoveryTests(unittest.TestCase):
         self.assertEqual([e['slug'] for e in discovery.search(self.data['tools'],'COOKIE')],['cookie-scope-audit'])
         self.assertEqual(discovery.search(self.data['tools'],'definitely-no-match'),[])
         self.assertTrue(all(e['category']=='data' for e in discovery.search(self.data['tools'],category='data')))
+    def test_frozen_offline_task_queries(self):
+        # Manually constructed local simulations, not evidence of natural adoption.
+        # Queries were frozen before inspection; three exposed missing core task
+        # terms in metadata. Keep the same queries rather than tuning the search.
+        cases = {
+            'Content-Disposition': ['content-disposition-filename-kit'],
+            'cookie scope': ['cookie-scope-audit'],
+            'CORS preflight': ['cors-response-audit'],
+            'Link pagination': ['http-link-header-kit'],
+            'multipart boundary': ['multipart-boundary-fixtures'],
+            'cache age': ['http-cache-age-lab'],
+            'retry deadline': ['retry-budget-lab'],
+            'csv schema': ['csv-schema-contract'],
+            'zip traversal': ['zip-member-preflight'],
+            'translation placeholders': ['translation-placeholder-contract'],
+            'lsp edits': ['lsp-position-edit-kit'],
+            'resize png': [],
+            'production deploy': [],
+        }
+        for query, expected in cases.items():
+            with self.subTest(query=query):
+                self.assertEqual([entry['slug'] for entry in discovery.search(
+                    self.data['tools'], query)], expected)
+
     def test_cli_validation_and_search_from_other_directory(self):
         for args,count in [(['--query','cookie'],1),([],50)]:
             result=subprocess.run([sys.executable,'-B',str(ROOT/'scripts/discover_tools.py'),*args],cwd=ROOT.parent,capture_output=True,text=True,timeout=10)
