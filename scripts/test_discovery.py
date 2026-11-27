@@ -64,6 +64,10 @@ class DiscoveryTests(unittest.TestCase):
             'zip traversal': ['zip-member-preflight'],
             'translation placeholders': ['translation-placeholder-contract'],
             'lsp edits': ['lsp-position-edit-kit'],
+            'line endings': ['newline-policy-audit'],
+            'newline CRLF': ['newline-policy-audit'],
+            'source maps': ['source-map-reference-audit'],
+            'SQLite foreign keys': ['sqlite-foreign-key-audit'],
             'resize png': [],
             'production deploy': [],
         }
