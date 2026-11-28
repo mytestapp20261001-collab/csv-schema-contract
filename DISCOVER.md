@@ -14,7 +14,7 @@ python3 -B scripts/discover_tools.py --validate
 python3 -B -m unittest discover -s scripts -p test_discovery.py -v
 ```
 
-Search matches all case-insensitive words against the tool name, task summary and category. Empty search lists all 50. No match is an empty result, not permission to use a vaguely similar tool. The CLI only reads local JSON and prints metadata; it never executes listed commands, installs anything, opens a website or uploads data.
+Search matches all case-insensitive words against the tool name, task summary and category. If the literal search has no match, a single trailing ASCII `?` attached to a word is ignored and the same category filter still applies. Empty search lists all 50. No match is an empty result, not permission to use a vaguely similar tool. The CLI only reads local JSON and prints metadata; it never executes listed commands, installs anything, opens a website or uploads data.
 
 ## Machine-readable entry point
 
