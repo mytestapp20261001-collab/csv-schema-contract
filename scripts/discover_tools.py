@@ -89,10 +89,19 @@ def validate(discovery, inventory, catalog):
 
 
 def search(entries, query='', category=None):
-    words = query.casefold().split()
-    return [entry for entry in entries if (category is None or entry['category'] == category)
-            and all(word in ' '.join((entry['slug'], entry['summary'], entry['category'])).casefold()
-                    for word in words)]
+    candidates = [(entry, ' '.join((entry['slug'], entry['summary'], entry['category'])).casefold())
+                  for entry in entries if category is None or entry['category'] == category]
+
+    def match(text):
+        words = text.casefold().split()
+        return [entry for entry, searchable in candidates if all(word in searchable for word in words)]
+
+    query = query.rstrip()
+    matches = match(query)
+    # Preserve literal matches (including a lone ?) and internal punctuation.
+    if not matches and re.search(r'\w\?$', query):
+        return match(query[:-1])
+    return matches
 
 
 def main(argv=None):

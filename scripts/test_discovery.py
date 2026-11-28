@@ -68,6 +68,10 @@ class DiscoveryTests(unittest.TestCase):
             'newline CRLF': ['newline-policy-audit'],
             'source maps': ['source-map-reference-audit'],
             'SQLite foreign keys': ['sqlite-foreign-key-audit'],
+            'mixed line endings': ['newline-policy-audit'],
+            'source map .map': ['source-map-reference-audit'],
+            'SQLite FK': ['sqlite-foreign-key-audit'],
+            'CSV headers': ['csv-schema-contract'],
             'resize png': [],
             'production deploy': [],
         }
@@ -75,6 +79,25 @@ class DiscoveryTests(unittest.TestCase):
             with self.subTest(query=query):
                 self.assertEqual([entry['slug'] for entry in discovery.search(
                     self.data['tools'], query)], expected)
+
+    def test_trailing_question_mark_fallback_preserves_literal_matches_and_scope(self):
+        cases = [
+            ('newline LF?  ', None, ['newline-policy-audit']),
+            ('SQLite foreign keys?', 'quality', ['sqlite-foreign-key-audit']),
+            ('SQLite foreign keys?', 'filesystem', []),
+            ('?', None, ['playwright-run-audit']),
+            ('newline LF??', None, []),
+            ('newline? LF', None, []),
+            ('source map .map.js', None, []),
+        ]
+        for query, category, expected in cases:
+            with self.subTest(query=query, category=category):
+                self.assertEqual([entry['slug'] for entry in discovery.search(
+                    self.data['tools'], query, category)], expected)
+
+        literal = {'slug': 'literal', 'summary': 'what?', 'category': 'data'}
+        near = {'slug': 'near', 'summary': 'what', 'category': 'data'}
+        self.assertEqual(discovery.search([literal, near], 'what?'), [literal])
 
     def test_cli_validation_and_search_from_other_directory(self):
         for args,count in [(['--query','cookie'],1),([],50)]:
